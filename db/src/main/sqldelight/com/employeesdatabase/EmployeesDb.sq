@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS EmployeesDb(
+    id INTEGER as Int NOT NULL UNIQUE PRIMARY KEY,
+    firstName TEXT NOT NULL,
+    lastName TEXT NOT NULL,
+    age INTEGER NOT NULL,
+    gender INTEGER NOT NULL
+);
+
+insertOrReplace:
+INSERT OR REPLACE INTO EmployeesDb(
+    id,
+    firstName,
+    lastName,
+    age,
+    gender
+)VALUES(?,?,?,?,?);
+
+selectAll:
+SELECT * FROM EmployeesDb;
+
+selectById:
+SELECT * FROM EmployeesDb WHERE id = ?;

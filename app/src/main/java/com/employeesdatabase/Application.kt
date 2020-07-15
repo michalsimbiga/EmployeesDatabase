@@ -9,7 +9,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import timber.log.Timber
 
-class EmployeesDatabaseApp : Application() {
+class Application : Application() {
 
     private val activityLifecycleCallbacks by lazy { ActivityAnalytics(ActivityCallbacksImpl()) }
 
@@ -22,7 +22,7 @@ class EmployeesDatabaseApp : Application() {
     }
 
     private fun initKoin() = startKoin {
-        androidContext(this@EmployeesDatabaseApp)
+        androidContext(this@Application)
         androidLogger()
     }
 
