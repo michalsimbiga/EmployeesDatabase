@@ -8,6 +8,7 @@
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/addEmployeeRecycler"
         android:layout_width="match_parent"
+        android:padding="10dp"
         android:layout_height="match_parent" />
 
     <!--    <com.google.android.material.textfield.TextInputLayout-->
@@ -119,4 +120,4 @@
 
     <!--    </RadioGroup>-->
 
-</>
+</FrameLayout>

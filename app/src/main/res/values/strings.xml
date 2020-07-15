@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">employeesdatabase</string>
+
+    <!--  Add Fragment  -->
+    <string name="first_name_hint">First Name</string>
+    <string name="second_name_hint">Second Name</string>
+    <string name="age_name_hint">Age</string>
+
+    <string name="employee_detail_header">Employee Details</string>
+    <string name="addresses_header">Addresses Details</string>
+    <string name="gender_header">Gender</string>
+
 </resources>

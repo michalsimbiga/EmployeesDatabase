@@ -9,10 +9,13 @@ import com.employeesdatabase.R
 import com.employeesdatabase.common.BaseFragment
 import com.employeesdatabase.di.addFragmentViewModel
 import com.employeesdatabase.doNothing
+import kotlinx.android.synthetic.main.fragment_add_employee.view.*
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 
 class AddEmployeeFragment : BaseFragment() {
+
+    private val epoxyController by lazy { AddEmployeeEpoxyController() }
 
     override fun onAttach(context: Context) {
         loadKoinModules(addFragmentViewModel)
@@ -26,7 +29,10 @@ class AddEmployeeFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_add_employee, container, false)
+    ): View? = inflater.inflate(R.layout.fragment_add_employee, container, false).apply {
+        addEmployeeRecycler.setController(epoxyController)
+        epoxyController.requestModelBuild()
+    }
 
     override fun onDetach() {
         unloadKoinModules(addFragmentViewModel)
