@@ -55,6 +55,7 @@ dependencies {
     implementation Libraries.koinViewModelAndroidX
 
     implementation Libraries.mvrx
+    implementation Libraries.epoxy
     implementation Libraries.retrofit
 
     implementation Libraries.appCompat

@@ -1,117 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/firstNameTextInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="First Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/addEmployeeRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/firstNameEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:inputType="textCapSentences"
-            android:nextFocusDown="@id/secondNameEditText"
-            android:singleLine="true"
-            tools:text="First Name" />
+    <!--    <com.google.android.material.textfield.TextInputLayout-->
+    <!--        android:id="@+id/firstNameTextInputLayout"-->
+    <!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_margin="10dp"-->
+    <!--        android:hint="First Name"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent">-->
 
-    </com.google.android.material.textfield.TextInputLayout>
+    <!--        <com.google.android.material.textfield.TextInputEditText-->
+    <!--            android:id="@+id/firstNameEditText"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:imeOptions="actionNext"-->
+    <!--            android:inputType="textCapSentences"-->
+    <!--            android:nextFocusDown="@id/secondNameEditText"-->
+    <!--            android:singleLine="true"-->
+    <!--            tools:text="First Name" />-->
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/secondNameTextInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Second Name"
-        app:layout_constraintEnd_toEndOf="@id/firstNameTextInputLayout"
-        app:layout_constraintStart_toStartOf="@id/firstNameTextInputLayout"
-        app:layout_constraintTop_toBottomOf="@id/firstNameTextInputLayout">
+    <!--    </com.google.android.material.textfield.TextInputLayout>-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/secondNameEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:inputType="textCapSentences"
-            android:nextFocusDown="@id/ageEditText"
-            android:singleLine="true"
-            tools:text="Second Name" />
+    <!--    <com.google.android.material.textfield.TextInputLayout-->
+    <!--        android:id="@+id/secondNameTextInputLayout"-->
+    <!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:hint="Second Name"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/firstNameTextInputLayout"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/firstNameTextInputLayout"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/firstNameTextInputLayout">-->
 
-    </com.google.android.material.textfield.TextInputLayout>
+    <!--        <com.google.android.material.textfield.TextInputEditText-->
+    <!--            android:id="@+id/secondNameEditText"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:imeOptions="actionNext"-->
+    <!--            android:inputType="textCapSentences"-->
+    <!--            android:nextFocusDown="@id/ageEditText"-->
+    <!--            android:singleLine="true"-->
+    <!--            tools:text="Second Name" />-->
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ageTextInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Age"
-        app:layout_constraintEnd_toEndOf="@id/secondNameTextInputLayout"
-        app:layout_constraintStart_toStartOf="@id/secondNameTextInputLayout"
-        app:layout_constraintTop_toBottomOf="@id/secondNameTextInputLayout">
+    <!--    </com.google.android.material.textfield.TextInputLayout>-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ageEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionDone"
-            android:nextFocusForward="@id/genderRadioGroup"
-            android:inputType="number"
-            android:singleLine="true"
-            tools:text="Age" />
+    <!--    <com.google.android.material.textfield.TextInputLayout-->
+    <!--        android:id="@+id/ageTextInputLayout"-->
+    <!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:hint="Age"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/secondNameTextInputLayout"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/secondNameTextInputLayout"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/secondNameTextInputLayout">-->
 
-    </com.google.android.material.textfield.TextInputLayout>
+    <!--        <com.google.android.material.textfield.TextInputEditText-->
+    <!--            android:id="@+id/ageEditText"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:imeOptions="actionDone"-->
+    <!--            android:nextFocusForward="@id/genderRadioGroup"-->
+    <!--            android:inputType="number"-->
+    <!--            android:singleLine="true"-->
+    <!--            tools:text="Age" />-->
 
-    <TextView
-        android:id="@+id/genderHeader"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Gender"
-        app:layout_constraintEnd_toEndOf="@id/ageTextInputLayout"
-        app:layout_constraintStart_toStartOf="@id/ageTextInputLayout"
-        app:layout_constraintTop_toBottomOf="@id/ageTextInputLayout" />
+    <!--    </com.google.android.material.textfield.TextInputLayout>-->
 
-    <RadioGroup
-        android:id="@+id/genderRadioGroup"
-        android:layout_width="0dp"
-        android:focusableInTouchMode="true"
-        android:layout_height="wrap_content"
-        android:checkedButton="@id/notDisclosedRadioButton"
-        app:layout_constraintEnd_toEndOf="@id/genderHeader"
-        app:layout_constraintStart_toStartOf="@id/genderHeader"
-        app:layout_constraintTop_toBottomOf="@id/genderHeader">
+    <!--    <TextView-->
+    <!--        android:id="@+id/genderHeader"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:text="Gender"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/ageTextInputLayout"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/ageTextInputLayout"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/ageTextInputLayout" />-->
 
-        <RadioButton
-            android:id="@+id/notDisclosedRadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Not disclosed" />
+    <!--    <RadioGroup-->
+    <!--        android:id="@+id/genderRadioGroup"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:focusableInTouchMode="true"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:checkedButton="@id/notDisclosedRadioButton"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/genderHeader"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/genderHeader"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/genderHeader">-->
 
-        <RadioButton
-            android:id="@+id/maleRadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Male" />
+    <!--        <RadioButton-->
+    <!--            android:id="@+id/notDisclosedRadioButton"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="Not disclosed" />-->
 
-        <RadioButton
-            android:id="@+id/FemaleRadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Female" />
+    <!--        <RadioButton-->
+    <!--            android:id="@+id/maleRadioButton"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="Male" />-->
 
-    </RadioGroup>
+    <!--        <RadioButton-->
+    <!--            android:id="@+id/FemaleRadioButton"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="Female" />-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    </RadioGroup>-->
+
+</>
