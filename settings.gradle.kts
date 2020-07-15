@@ -1,5 +1,5 @@
 rootProject.name = "employeesdatabase"
 
 with(Modules) {
-    include(app, domain, data)
+    include(app, domain, data, db)
 }
