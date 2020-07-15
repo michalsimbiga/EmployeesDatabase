@@ -11,4 +11,10 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home" />
 
+    <fragment
+        android:id="@+id/addEmployeeFragment"
+        android:name="com.employeesdatabase.ui.addEmployee.AddEmployeeFragment"
+        android:label="AddEmployeeFragment"
+        tools:layout="@layout/fragment_add_employee" />
+
 </navigation>
