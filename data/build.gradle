@@ -1,0 +1,10 @@
+apply from: "$rootDir/common-kotlin.gradle"
+
+dependencies {
+    implementation Libraries.coreKtx
+    implementation Libraries.koinAndroidX
+
+    implementation Libraries.kotlinCoroutines
+
+    implementation Libraries.sqldelightAndroidDriver
+}
