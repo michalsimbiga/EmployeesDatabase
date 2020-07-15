@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS EmployeesDb(
+CREATE TABLE IF NOT EXISTS EmployeeDb(
     id INTEGER as Int NOT NULL UNIQUE PRIMARY KEY,
     firstName TEXT NOT NULL,
     lastName TEXT NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS EmployeesDb(
 );
 
 insertOrReplace:
-INSERT OR REPLACE INTO EmployeesDb(
+INSERT OR REPLACE INTO EmployeeDb(
     id,
     firstName,
     lastName,
@@ -16,7 +16,7 @@ INSERT OR REPLACE INTO EmployeesDb(
 )VALUES(?,?,?,?,?);
 
 selectAll:
-SELECT * FROM EmployeesDb;
+SELECT * FROM EmployeeDb;
 
 selectById:
-SELECT * FROM EmployeesDb WHERE id = ?;
+SELECT * FROM EmployeeDb WHERE id = ?;

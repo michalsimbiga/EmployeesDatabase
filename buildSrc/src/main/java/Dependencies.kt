@@ -16,7 +16,6 @@ object Modules {
     val db = ":db"
 }
 
-
 object Versions {
     val kotlin = "1.3.50"
 
