@@ -16,7 +16,6 @@ android {
             debuggable true
             minifyEnabled false
         }
-
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -24,7 +23,6 @@ android {
     }
     testOptions {
         animationsDisabled = true
-
         reportDir "$rootDir/reports/${project.getName()}"
         resultsDir "$rootDir/reports/results/${project.getName()}"
         unitTests.returnDefaultValues = true

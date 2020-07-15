@@ -1,0 +1,8 @@
+apply from: "$rootDir/common-kotlin.gradle"
+
+dependencies {
+    implementation Libraries.coreKtx
+    implementation Libraries.kotlinCoroutines
+    implementation Libraries.retrofit
+    implementation Libraries.threeTen
+}

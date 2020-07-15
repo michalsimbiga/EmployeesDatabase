@@ -1,3 +1,4 @@
+include(":domain")
 rootProject.name = "employeesdatabase"
 
 with(Modules) {
