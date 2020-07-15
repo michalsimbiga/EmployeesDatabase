@@ -4,11 +4,12 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
-import androidx.annotation.StringRes
-import com.airbnb.epoxy.ModelProp
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelView
 import com.employeesdatabase.R
-import kotlinx.android.synthetic.main.item_header.view.*
+import kotlinx.android.synthetic.main.item_gender_input.view.*
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class GenderInputItemView @JvmOverloads constructor(
@@ -20,6 +21,15 @@ class GenderInputItemView @JvmOverloads constructor(
     init {
         View.inflate(context, R.layout.item_gender_input, this)
     }
+
+    @CallbackProp
+    fun setOnRadioButtonChanged(onRadioButtonChanged: ((String) -> Unit)?) =
+        genderRadioGroup.setOnCheckedChangeListener { radioGroup, buttonId ->
+            val buttonText = radioGroup?.findViewById<RadioButton>(buttonId)?.text
+            onRadioButtonChanged?.invoke(buttonText.toString())
+        }
+//    genderRadioGroup.setOnCheckedChangeListener(onRadioButtonChanged)
+
 //
 //    @ModelProp
 //    fun setHeaderText(@StringRes header: Int?) {

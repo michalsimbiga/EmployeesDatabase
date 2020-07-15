@@ -1,6 +1,7 @@
 package com.employeesdatabase.ui.addEmployee.view
 
 import android.content.Context
+import android.text.Editable
 import android.text.InputType
 import android.util.AttributeSet
 import android.widget.FrameLayout

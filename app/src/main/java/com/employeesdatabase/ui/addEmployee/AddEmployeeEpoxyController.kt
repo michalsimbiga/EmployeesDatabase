@@ -16,7 +16,7 @@ class AddEmployeeEpoxyController : EpoxyController() {
             headerText(R.string.employee_detail_header)
         }
         textInputItemView {
-            id("asdasd")
+            id("xcv")
             hint(R.string.first_name_hint)
             onTextChangedCallback { newFirstName -> Timber.i("TESTING $newFirstName") }
             isNumericalInput(false)
@@ -34,14 +34,15 @@ class AddEmployeeEpoxyController : EpoxyController() {
             isNumericalInput(true)
         }
         headerItemView {
-            id("asdasd")
+            id("zxca")
             headerText(R.string.gender_header)
         }
         genderInputItemView {
-            id("asdasd")
+            id("az")
+            onRadioButtonChanged { buttonText -> Timber.i("TESTING ${buttonText}") }
         }
         addAddressButtonItemView {
-            id("asdasd")
+            id("bdf")
         }
     }
 }
