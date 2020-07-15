@@ -9,6 +9,7 @@ import com.employeesdatabase.common.BaseFragment
 import com.employeesdatabase.doNothing
 
 class AddEmployeeFragment : BaseFragment() {
+
     override fun invalidate() = doNothing
 
     override fun onCreateView(
