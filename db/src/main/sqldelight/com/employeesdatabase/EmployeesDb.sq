@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS EmployeeDb(
     firstName TEXT NOT NULL,
     lastName TEXT NOT NULL,
     age INTEGER NOT NULL,
-    gender INTEGER NOT NULL
+    gender TEXT NOT NULL
 );
 
 insertOrReplace:

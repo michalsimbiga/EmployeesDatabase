@@ -1,6 +1,10 @@
 apply from: "$rootDir/common-kotlin.gradle"
 
 dependencies {
+
+    implementation project(Modules.db)
+    implementation project(Modules.domain)
+
     implementation Libraries.coreKtx
     implementation Libraries.koinAndroidX
 

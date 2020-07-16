@@ -10,3 +10,19 @@ data class AddressItem(
     fun isEmpty() =
         street.trim() == "" && city.trim() == "" && zip.trim() == "" && country.trim() == ""
 }
+
+fun AddressItem.toDomain() =
+    Address(
+        street = street,
+        city = city,
+        zip = zip,
+        country = country
+    )
+
+fun Address.toItem() =
+    AddressItem(
+        street = street,
+        city = city,
+        zip = zip,
+        country = country
+    )

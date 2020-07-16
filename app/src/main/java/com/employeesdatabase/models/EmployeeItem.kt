@@ -7,3 +7,21 @@ data class EmployeeItem(
     val gender: String = "",
     val addressess: List<AddressItem> = listOf()
 )
+
+fun Employee.toItem() =
+    EmployeeItem(
+        firstName = firstName,
+        lastName = lastName,
+        age = age,
+        gender = gender,
+        addressess = addressess.map { it.toItem() }
+    )
+
+fun EmployeeItem.toDomain() =
+    Employee(
+        firstName = firstName,
+        lastName = lastName,
+        age = age,
+        gender = gender,
+        addressess = addressess.map { it.toDomain() }
+    )
