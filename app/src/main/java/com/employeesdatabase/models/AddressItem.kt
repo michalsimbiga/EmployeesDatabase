@@ -24,5 +24,6 @@ fun Address.toItem() =
         street = street,
         city = city,
         zip = zip,
-        country = country
+        country = country,
+        editable = false
     )

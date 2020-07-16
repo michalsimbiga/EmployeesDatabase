@@ -1,5 +1,7 @@
 package com.employeesdatabase.models
 
+import com.employeesdatabase.EmployeeDb
+
 data class EmployeeEntity(
     val firstName: String,
     val lastName: String,
@@ -7,15 +9,6 @@ data class EmployeeEntity(
     val gender: String,
     val addressess: List<AddressEntity>
 )
-
-//fun EmployeeDb.toEntity() =
-//    EmployeeEntity(
-//        firstName = firstName,
-//        lastName = lastName,
-//        age = age.toInt(),
-//        gender = gender,
-//        addressess = addressess
-//    )
 
 fun EmployeeEntity.toDomain() =
     Employee(

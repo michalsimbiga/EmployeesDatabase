@@ -6,6 +6,8 @@ import com.employeesdatabase.DatabaseImpl
 import com.employeesdatabase.MyDatabase
 import com.employeesdatabase.ui.addEmployee.AddEmployeeViewModel
 import com.employeesdatabase.ui.addEmployee.AddEmployeeViewState
+import com.employeesdatabase.ui.home.HomeViewModel
+import com.employeesdatabase.ui.home.HomeViewState
 import com.squareup.sqldelight.android.AndroidSqliteDriver
 import com.squareup.sqldelight.db.SqlDriver
 import org.koin.android.ext.koin.androidContext
@@ -45,6 +47,15 @@ val addFragmentViewModel = module {
         AddEmployeeViewModel(
             state = state,
             insertOrReplaceEmployeeUseCase = get()
+        )
+    }
+}
+
+val homeFragmentViewModel = module {
+    viewModel { (state: HomeViewState) ->
+        HomeViewModel(
+            state = state,
+            getAllEmployeesUseCase = get()
         )
     }
 }
