@@ -1,6 +1,7 @@
 package com.employeesdatabase.di
 
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.employeesdatabase.Database
 import com.employeesdatabase.DatabaseImpl
 import com.employeesdatabase.MyDatabase
 import com.employeesdatabase.ui.addEmployee.AddEmployeeViewModel
@@ -29,7 +30,7 @@ val mainModule = module {
     }
 
     single {
-        DatabaseImpl(database = lazy { get<MyDatabase>() })
+        DatabaseImpl(database = lazy { get<MyDatabase>() }) as Database
     }
 
     single {
@@ -42,7 +43,8 @@ val mainModule = module {
 val addFragmentViewModel = module {
     viewModel { (state: AddEmployeeViewState) ->
         AddEmployeeViewModel(
-            state = state
+            state = state,
+            insertOrReplaceEmployeeUseCase = get()
         )
     }
 }

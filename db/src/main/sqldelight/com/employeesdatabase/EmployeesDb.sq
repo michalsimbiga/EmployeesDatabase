@@ -1,22 +1,24 @@
 CREATE TABLE IF NOT EXISTS EmployeeDb(
-    id INTEGER as Int NOT NULL UNIQUE PRIMARY KEY,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     firstName TEXT NOT NULL,
     lastName TEXT NOT NULL,
-    age INTEGER NOT NULL,
+    age INTEGER as Int NOT NULL,
     gender TEXT NOT NULL
 );
 
 insertOrReplace:
 INSERT OR REPLACE INTO EmployeeDb(
-    id,
     firstName,
     lastName,
     age,
     gender
-)VALUES(?,?,?,?,?);
+)VALUES(?,?,?,?);
 
 selectAll:
 SELECT * FROM EmployeeDb;
 
 selectById:
 SELECT * FROM EmployeeDb WHERE id = ?;
+
+selectByAllFields:
+SELECT * FROM EmployeeDb WHERE firstName = ? AND lastName = ? AND age = ? AND gender = ?;

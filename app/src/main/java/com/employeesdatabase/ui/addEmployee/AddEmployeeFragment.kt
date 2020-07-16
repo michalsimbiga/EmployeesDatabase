@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.airbnb.mvrx.Success
 import com.airbnb.mvrx.fragmentViewModel
+import com.airbnb.mvrx.withState
 import com.employeesdatabase.R
 import com.employeesdatabase.common.BaseFragment
 import com.employeesdatabase.di.addFragmentViewModel
-import com.employeesdatabase.doNothing
 import kotlinx.android.synthetic.main.fragment_add_employee.*
 import kotlinx.android.synthetic.main.fragment_add_employee.view.*
 import org.koin.core.context.loadKoinModules
@@ -27,7 +29,9 @@ class AddEmployeeFragment : BaseFragment() {
         super.onAttach(context)
     }
 
-    override fun invalidate() = doNothing
+    override fun invalidate() = withState(viewModel) { state ->
+        if (state.addUserResult is Success) findNavController().popBackStack()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

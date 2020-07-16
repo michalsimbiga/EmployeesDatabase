@@ -1,25 +1,21 @@
 CREATE TABLE IF NOT EXISTS AddressDb (
-    id INTEGER as Int NOT NULL UNIQUE,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     street TEXT  NOT NULL,
     city TEXT  NOT NULL,
-    state TEXT  NOT NULL,
     zip TEXT  NOT NULL,
     country TEXT  NOT NULL,
     employeeId INTEGER AS Int NOT NULL,
-    PRIMARY KEY (employeeId, id),
     FOREIGN KEY (employeeId) REFERENCES EmployeeDb(id) ON DELETE CASCADE
 );
 
 insertOrReplace:
 INSERT OR REPLACE INTO AddressDb(
-    id,
     street,
     city,
-    state,
     zip,
     country,
     employeeId
-)VALUES(?,?,?,?,?,?,?);
+)VALUES(?,?,?,?,?);
 
 selectAll:
 SELECT * FROM AddressDb;
