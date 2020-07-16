@@ -1,9 +1,10 @@
 package com.employeesdatabase.repository
 
 import com.employeesdatabase.common.Result
+import com.employeesdatabase.dataSource.LocalDataSource
 import com.employeesdatabase.models.Employee
 
-class EmployeesRepositoryImpl : EmployeesRepository {
+class EmployeesRepositoryImpl(private val localDataSource: LocalDataSource) : EmployeesRepository {
 
     override suspend fun getAllEmployees(): Result<List<Employee>> {
         TODO("Not yet implemented")
