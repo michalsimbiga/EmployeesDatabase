@@ -4,8 +4,10 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
+import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelView
 import com.employeesdatabase.R
+import kotlinx.android.synthetic.main.item_add_address_button.view.*
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class AddAddressButtonItemView @JvmOverloads constructor(
@@ -16,5 +18,10 @@ class AddAddressButtonItemView @JvmOverloads constructor(
 
     init {
         View.inflate(context, R.layout.item_add_address_button, this)
+    }
+
+    @CallbackProp
+    fun setOnAddAddressCallback(onAddAddressCallback: OnClickListener?) {
+        addAddressButton.setOnClickListener(onAddAddressCallback)
     }
 }

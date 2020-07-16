@@ -1,9 +1,12 @@
 package com.employeesdatabase.models
 
 data class AddressItem(
-    val street: String,
-    val city: String,
-    val state: String,
-    val zip: String,
-    val country: String
-)
+    var street: String = "",
+    var city: String = "",
+    var zip: String = "",
+    var country: String = "",
+    var editable: Boolean = true
+) {
+    fun isEmpty() =
+        street.trim() == "" && city.trim() == "" && zip.trim() == "" && country.trim() == ""
+}

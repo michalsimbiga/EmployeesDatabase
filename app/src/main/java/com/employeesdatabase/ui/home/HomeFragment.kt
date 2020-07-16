@@ -26,4 +26,9 @@ class HomeFragment : BaseFragment() {
         addButton.setOnClickListener { findNavController().navigate(R.id.addEmployeeFragment) }
     }
 
+    override fun onDestroyView() {
+        addButton.setOnClickListener(null)
+
+        super.onDestroyView()
+    }
 }

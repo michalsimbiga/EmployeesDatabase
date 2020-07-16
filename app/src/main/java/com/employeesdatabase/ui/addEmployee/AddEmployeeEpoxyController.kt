@@ -2,13 +2,13 @@ package com.employeesdatabase.ui.addEmployee
 
 import com.airbnb.epoxy.EpoxyController
 import com.employeesdatabase.R
-import com.employeesdatabase.ui.addEmployee.view.addAddressButtonItemView
-import com.employeesdatabase.ui.addEmployee.view.genderInputItemView
-import com.employeesdatabase.ui.addEmployee.view.headerItemView
-import com.employeesdatabase.ui.addEmployee.view.textInputItemView
+import com.employeesdatabase.models.AddressItem
+import com.employeesdatabase.ui.addEmployee.view.*
 import timber.log.Timber
 
 class AddEmployeeEpoxyController : EpoxyController() {
+
+    private val listOfAddressess = mutableListOf<AddressItem>()
 
     override fun buildModels() {
         headerItemView {
@@ -41,8 +41,37 @@ class AddEmployeeEpoxyController : EpoxyController() {
             id("az")
             onRadioButtonChanged { buttonText -> Timber.i("TESTING ${buttonText}") }
         }
+        listOfAddressess.forEachIndexed { index, addressItem ->
+            if (addressItem.editable.not()) {
+                addressItemView {
+                    id(index)
+                    addressModel(addressItem)
+                }
+            } else {
+                editableAddressItemView {
+                    id(index)
+                    addressModel(addressItem)
+                    onDiscardButtonCallback { onClicked ->
+                        listOfAddressess.removeAt(index)
+                        requestModelBuild()
+                    }
+                    onAddButtonCallback { addressModel ->
+                        Timber.i("TESTING onAddButtonClicked $addressModel")
+                        listOfAddressess.removeAt(index)
+                        listOfAddressess.add(addressModel)
+                        requestModelBuild()
+                    }
+                }
+            }
+
+        }
         addAddressButtonItemView {
             id("bdf")
+            onAddAddressCallback { onClicked ->
+                Timber.i("TESTING buttonClicked")
+                listOfAddressess.add(AddressItem())
+                requestModelBuild()
+            }
         }
     }
 }

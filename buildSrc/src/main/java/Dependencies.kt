@@ -29,7 +29,7 @@ object Versions {
 
     val kotlinCoroutines = "1.3.2"
 
-    val navigation = "2.1.0-rc01"
+    val navigation = "2.2.0"
     val appCompat = "1.1.0"
     val material = "1.1.0"
     val core_ktx = "1.2.0"
