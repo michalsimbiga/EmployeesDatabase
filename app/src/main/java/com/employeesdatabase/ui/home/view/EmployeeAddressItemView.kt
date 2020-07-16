@@ -24,10 +24,10 @@ class EmployeeAddressItemView @JvmOverloads constructor(
 
     @ModelProp
     fun setAddressModel(address: AddressItem?) {
-        homeEmployeeAddressStreet.text = address?.street
-        homeEmployeeAddressCity.text = address?.city
-        homeEmployeeAddressZip.text = address?.zip
-        homeEmployeeAddressCountry.text = address?.country
+        homeEmployeeAddressStreet.text = address?.street?.capitalize()
+        homeEmployeeAddressCity.text = address?.city?.capitalize()
+        homeEmployeeAddressZip.text = address?.zip?.capitalize()
+        homeEmployeeAddressCountry.text = address?.country?.capitalize()
     }
 
     @OnViewRecycled

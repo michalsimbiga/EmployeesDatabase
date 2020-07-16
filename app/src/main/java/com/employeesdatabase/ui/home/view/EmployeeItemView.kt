@@ -25,9 +25,9 @@ class EmployeeItemView @JvmOverloads constructor(
     @ModelProp
     fun setEmployeeModel(employee: EmployeeItem?) {
         val fullName = employee?.firstName + " " + employee?.lastName
-        homeEmployeeName.text = fullName
-        homeEmployeeAge.text = employee?.age.toString()
-        homeEmployeeGender.text = employee?.gender
+        homeEmployeeName.text = fullName.capitalize()
+        homeEmployeeAge.text = employee?.age.toString().capitalize()
+        homeEmployeeGender.text = employee?.gender?.capitalize()
     }
 
     @OnViewRecycled

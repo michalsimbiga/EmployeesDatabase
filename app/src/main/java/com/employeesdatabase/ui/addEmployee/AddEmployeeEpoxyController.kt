@@ -5,6 +5,7 @@ import com.employeesdatabase.R
 import com.employeesdatabase.models.AddressItem
 import com.employeesdatabase.models.EmployeeItem
 import com.employeesdatabase.ui.addEmployee.view.*
+import com.employeesdatabase.ui.common.emptyItemView
 import timber.log.Timber
 
 class AddEmployeeEpoxyController : EpoxyController() {
