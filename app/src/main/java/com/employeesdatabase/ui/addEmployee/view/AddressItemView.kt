@@ -4,11 +4,13 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
+import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.employeesdatabase.R
 import com.employeesdatabase.models.AddressItem
 import kotlinx.android.synthetic.main.item_address_view.view.*
+import kotlinx.android.synthetic.main.item_editable_address.view.*
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class AddressItemView @JvmOverloads constructor(
@@ -27,5 +29,15 @@ class AddressItemView @JvmOverloads constructor(
         cityTextView.text = addressModel?.city
         zipTextView.text = addressModel?.zip
         countryTextView.text = addressModel?.country
+    }
+
+    @CallbackProp
+    fun setOnDiscardButtonCallback(onDiscardButtonListener: OnClickListener?) {
+        removeAddressButton.setOnClickListener(onDiscardButtonListener)
+    }
+
+    @CallbackProp
+    fun setOnEditButtonCallback(onEditButtonListener: OnClickListener?) {
+        editAddressButton.setOnClickListener(onEditButtonListener)
     }
 }
