@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <TextView
+        android:id="@+id/homeEmployeeAddressStreetHeader"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_width="wrap_content"
+        android:text="Street: "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/homeEmployeeAddressStreet"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/homeEmployeeAddressStreetHeader"
+        app:layout_constraintTop_toTopOf="@id/homeEmployeeAddressStreetHeader"
+        tools:text="Sw. Macierewicza 11/4" />
+
+    <TextView
+        android:id="@+id/homeEmployeeAddressZipHeader"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Zip: "
+        app:layout_constraintStart_toStartOf="@id/homeEmployeeAddressStreetHeader"
+        app:layout_constraintTop_toBottomOf="@id/homeEmployeeAddressStreetHeader" />
+
+    <TextView
+        android:id="@+id/homeEmployeeAddressZip"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/homeEmployeeAddressZipHeader"
+        app:layout_constraintTop_toTopOf="@id/homeEmployeeAddressZipHeader"
+        tools:text="55-211" />
+
+    <TextView
+        android:id="@+id/homeEmployeeAddressCityHeader"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:text="City: "
+        app:layout_constraintStart_toEndOf="@id/homeEmployeeAddressZip"
+        app:layout_constraintTop_toTopOf="@id/homeEmployeeAddressZipHeader" />
+
+    <TextView
+        android:id="@+id/homeEmployeeAddressCity"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/homeEmployeeAddressCityHeader"
+        app:layout_constraintTop_toTopOf="@id/homeEmployeeAddressCityHeader"
+        tools:text="Warszawa" />
+
+    <TextView
+        android:id="@+id/homeEmployeeAddressCountryHeader"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Country: "
+        app:layout_constraintStart_toStartOf="@id/homeEmployeeAddressZipHeader"
+        app:layout_constraintTop_toBottomOf="@id/homeEmployeeAddressZipHeader" />
+
+    <TextView
+        android:id="@+id/homeEmployeeAddressCountry"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/homeEmployeeAddressCountryHeader"
+        app:layout_constraintTop_toTopOf="@id/homeEmployeeAddressCountryHeader"
+        tools:text="Polandball" />
+
+
+</merge>

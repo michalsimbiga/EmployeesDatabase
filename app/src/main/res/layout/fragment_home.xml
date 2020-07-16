@@ -3,13 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/homeText"
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/homeRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="HomeFragment"
-        android:textColor="@android:color/black" />
+        android:padding="10dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addButton"
@@ -17,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_add"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_add" />
 
 </FrameLayout>

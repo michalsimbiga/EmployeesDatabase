@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <TextView
+        android:id="@+id/homeEmployeeNameHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Name: "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/homeEmployeeName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/homeEmployeeNameHeader"
+        app:layout_constraintTop_toTopOf="@id/homeEmployeeNameHeader"
+        tools:text="Antonii Macierewicz" />
+
+    <TextView
+        android:id="@+id/homeEmployeeAgeHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age: "
+        app:layout_constraintStart_toStartOf="@id/homeEmployeeNameHeader"
+        app:layout_constraintTop_toBottomOf="@id/homeEmployeeNameHeader" />
+
+    <TextView
+        android:id="@+id/homeEmployeeAge"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        tools:text="60"
+        app:layout_constraintStart_toEndOf="@id/homeEmployeeAgeHeader"
+        app:layout_constraintTop_toTopOf="@id/homeEmployeeAgeHeader" />
+
+    <TextView
+        android:id="@+id/homeEmployeeGenderHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gender: "
+        app:layout_constraintStart_toEndOf="@id/homeEmployeeAge"
+        app:layout_constraintTop_toTopOf="@id/homeEmployeeAgeHeader" />
+
+    <TextView
+        android:id="@+id/homeEmployeeGender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        tools:text="Pikachu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/homeEmployeeGenderHeader"
+        app:layout_constraintTop_toTopOf="@id/homeEmployeeGenderHeader" />
+
+</merge>

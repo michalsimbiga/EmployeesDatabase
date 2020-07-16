@@ -11,11 +11,9 @@ import com.airbnb.mvrx.fragmentViewModel
 import com.airbnb.mvrx.withState
 import com.employeesdatabase.R
 import com.employeesdatabase.common.BaseFragment
-import com.employeesdatabase.di.addFragmentViewModel
 import com.employeesdatabase.di.homeFragmentViewModel
-import com.employeesdatabase.doNothing
-import com.employeesdatabase.ui.addEmployee.AddEmployeeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 
@@ -23,10 +21,10 @@ class HomeFragment : BaseFragment() {
 
     private val viewModel: HomeViewModel by fragmentViewModel()
 
+    private val epoxyController by lazy { HomeEpoxyController() }
+
     override fun invalidate() = withState(viewModel) { state ->
-        if(state.listOfEmployees is Success) {
-            homeText.setText(state.listOfEmployees()?.joinToString(separator = "\n"))
-        }
+        if (state.listOfEmployees is Success) epoxyController.setData(state.listOfEmployees.invoke())
     }
 
     override fun onAttach(context: Context) {
@@ -39,7 +37,9 @@ class HomeFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_home, container, false)
+    ): View? = inflater.inflate(R.layout.fragment_home, container, false).apply {
+        homeRecycler.setController(epoxyController)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
