@@ -16,9 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="10dp"
-        app:iconTint="@android:color/white"
         android:layout_marginBottom="10dp"
-        android:text="Add Employee"
+        android:text="Add"
         app:icon="@drawable/ic_done" />
 
 </FrameLayout>

@@ -1,7 +1,9 @@
 package com.employeesdatabase.models
 
-import com.employeesdatabase.EmployeeDb
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class EmployeeItem(
     val id: Int = -1,
     val firstName: String = "",
@@ -9,7 +11,7 @@ data class EmployeeItem(
     val age: Int = -1,
     val gender: String = "",
     val addressess: List<AddressItem> = listOf()
-)
+): Parcelable
 
 fun Employee.toItem() =
     EmployeeItem(

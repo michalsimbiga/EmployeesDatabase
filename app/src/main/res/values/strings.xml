@@ -10,4 +10,9 @@
     <string name="addresses_header">Addresses Details</string>
     <string name="gender_header">Gender</string>
 
+    <!--  Gender  -->
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_not_disclosed">Not Disclosed</string>
+
 </resources>

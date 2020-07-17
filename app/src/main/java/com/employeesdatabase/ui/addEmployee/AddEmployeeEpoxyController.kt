@@ -1,5 +1,6 @@
 package com.employeesdatabase.ui.addEmployee
 
+import android.os.Bundle
 import com.airbnb.epoxy.EpoxyController
 import com.employeesdatabase.R
 import com.employeesdatabase.models.AddressItem
@@ -11,44 +12,40 @@ import timber.log.Timber
 class AddEmployeeEpoxyController : EpoxyController() {
 
     private val listOfAddressess = mutableListOf<AddressItem>()
-    private var employee = EmployeeItem()
+    private var employee: EmployeeItem = EmployeeItem()
+        set(value) {
+            field = value
+            Timber.i("TESTING newEmployee $value")
+        }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putParcelable("Employee", employee)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(inState: Bundle?) {
+        inState?.getParcelable<EmployeeItem>("Employee")?.let { savedEmployee ->
+            employee = savedEmployee
+        }
+        super.onRestoreInstanceState(inState)
+    }
 
     override fun buildModels() {
         headerItemView {
-            id("asdasd")
+            id(HEADER_ITEM_VIEW_ID)
             headerText(R.string.employee_detail_header)
         }
-        textInputItemView {
-            id("xcv")
-            hint(R.string.first_name_hint)
-            onTextChangedCallback { newFirstName ->
-                employee = employee.copy(firstName = newFirstName)
+        editableEmployeeItemVIew {
+            id(employee.hashCode())
+            employeeModel(employee)
+            onFirstNameChangedCallback { firstName ->
+                employee = employee.copy(firstName = firstName)
             }
-            isNumericalInput(false)
-        }
-        textInputItemView {
-            id("asd")
-            hint(R.string.second_name_hint)
-            onTextChangedCallback { newSecondName ->
-                employee = employee.copy(lastName = newSecondName)
+            onLastNameChangedCallback { lastName ->
+                employee = employee.copy(lastName = lastName)
             }
-            isNumericalInput(false)
-        }
-        textInputItemView {
-            id("zxc")
-            hint(R.string.age_name_hint)
-            onTextChangedCallback { newAge ->
-                employee = employee.copy(age = newAge.toInt())
-            }
-            isNumericalInput(true)
-        }
-        headerItemView {
-            id("zxca")
-            headerText(R.string.gender_header)
-        }
-        genderInputItemView {
-            id("az")
-            onRadioButtonChanged { buttonText -> employee = employee.copy(gender = buttonText) }
+            onAgeChangedCallback { age -> employee = employee.copy(age = age.toInt()) }
+            onGenderChangedCallback { gender -> employee = employee.copy(gender = gender) }
         }
         listOfAddressess.forEachIndexed { index, addressItem ->
             if (addressItem.editable.not()) {
@@ -84,7 +81,7 @@ class AddEmployeeEpoxyController : EpoxyController() {
 
         }
         addAddressButtonItemView {
-            id("bdf")
+            id(ADD_ADDRESS_ITEM_VIEW_ID)
             onAddAddressCallback { _ ->
                 Timber.i("TESTING buttonClicked")
                 listOfAddressess.add(AddressItem())
@@ -92,9 +89,19 @@ class AddEmployeeEpoxyController : EpoxyController() {
             }
         }
         emptyItemView {
-            id("asdazxc")
+            id(EMPTY_ITEM_VIEW_ID)
         }
     }
 
-    fun getEmployee() = employee.copy(addressess = listOfAddressess.filterNot(AddressItem::isEmpty))
+    fun getEmployee(): EmployeeItem? {
+        Timber.i("TESTING getEmployee $employee ${listOfAddressess}")
+        return employee?.copy(addressess = listOfAddressess.filterNot(AddressItem::isEmpty))
+    }
+
+
+    companion object {
+        private const val EMPTY_ITEM_VIEW_ID = "HomeEpoxyControllerEmptyItemId"
+        private const val HEADER_ITEM_VIEW_ID = "HomeEpoxyControllerHeaderItemId"
+        private const val ADD_ADDRESS_ITEM_VIEW_ID = "HomeEpoxyControllerAddAddressItemId"
+    }
 }

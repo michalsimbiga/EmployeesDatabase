@@ -1,5 +1,9 @@
 package com.employeesdatabase.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class AddressItem(
     val id: Int = -1,
     val street: String = "",
@@ -7,7 +11,7 @@ data class AddressItem(
     val zip: String = "",
     val country: String = "",
     val editable: Boolean = true
-) {
+): Parcelable {
     fun isEmpty() =
         street.trim() == "" && city.trim() == "" && zip.trim() == "" && country.trim() == ""
 }

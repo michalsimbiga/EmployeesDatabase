@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_add_employee.*
 import kotlinx.android.synthetic.main.fragment_add_employee.view.*
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
+import timber.log.Timber
 
 class AddEmployeeFragment : BaseFragment() {
 
@@ -39,6 +40,7 @@ class AddEmployeeFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_add_employee, container, false).apply {
         addEmployeeRecycler.setController(epoxyController)
+        epoxyController.onRestoreInstanceState(savedInstanceState)
         epoxyController.requestModelBuild()
     }
 
@@ -46,8 +48,15 @@ class AddEmployeeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         addEmployeeButton.setOnClickListener {
-            viewModel.addEmployee(epoxyController.getEmployee())
+            Timber.i("TESTING addEmployeeButtonClicked ")
+            Timber.i("TESTING ${epoxyController.getEmployee()} ")
+            viewModel.addEmployee(epoxyController.getEmployee() ?: return@setOnClickListener)
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        epoxyController.onSaveInstanceState(outState)
+        super.onSaveInstanceState(outState)
     }
 
     override fun onDetach() {
