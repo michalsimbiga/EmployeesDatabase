@@ -13,19 +13,29 @@ import com.airbnb.mvrx.withState
 import com.employeesdatabase.R
 import com.employeesdatabase.common.BaseFragment
 import com.employeesdatabase.di.homeFragmentViewModel
+import com.employeesdatabase.models.EmployeeItem
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
+import timber.log.Timber
 
 class HomeFragment : BaseFragment() {
 
     private val viewModel: HomeViewModel by fragmentViewModel()
 
-    private val epoxyController by lazy {
-        HomeEpoxyController(
-            onDeleteEmployeeCallback = { employee -> viewModel.deleteEmployee(employee) }
-        )
+    private val epoxyController = HomeEpoxyController(
+        onDeleteEmployeeCallback = ::onDeleteEmployee,
+        onEditEmployeeCallback = ::onEditEmployee
+    )
+
+    private fun onDeleteEmployee(employee: EmployeeItem) {
+        viewModel.deleteEmployee(employee)
+    }
+
+    private fun onEditEmployee(employee: EmployeeItem) {
+        val action = HomeFragmentDirections.actionHomeToEdit(employee)
+        findNavController().navigate(action)
     }
 
     override fun invalidate() = withState(viewModel) { state ->
@@ -60,9 +70,16 @@ class HomeFragment : BaseFragment() {
         super.onDetach()
     }
 
-    override fun onDestroyView() {
-        addButton.setOnClickListener(null)
+    override fun onDestroy() {
         epoxyController.clearCallbacks()
+        unloadKoinModules(homeFragmentViewModel)
+
+        super.onDestroy()
+    }
+
+    override fun onDestroyView() {
+        onRecyclerViewDetached(homeRecycler)
+        addButton.setOnClickListener(null)
 
         super.onDestroyView()
     }

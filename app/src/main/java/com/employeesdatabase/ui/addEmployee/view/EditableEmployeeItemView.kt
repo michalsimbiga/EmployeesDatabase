@@ -14,10 +14,11 @@ import com.employeesdatabase.R
 import com.employeesdatabase.extensions.onNotBlankCallback
 import com.employeesdatabase.models.EmployeeItem
 import kotlinx.android.synthetic.main.fragment_add_editable_employee_item.view.*
+import timber.log.Timber
 
 typealias stringCallback = ((String) -> Unit)?
 
-@ModelView(saveViewState = true, autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
+@ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class EditableEmployeeItemView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

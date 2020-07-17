@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.airbnb.mvrx.Success
 import com.airbnb.mvrx.fragmentViewModel
 import com.airbnb.mvrx.withState
@@ -24,6 +25,12 @@ class AddEmployeeFragment : BaseFragment() {
 
     private val viewModel: AddEmployeeViewModel by fragmentViewModel()
 
+    private val args: AddEmployeeFragmentArgs by navArgs()
+
+    init {
+        Timber.i("TESTING AddEmployeeFragment created")
+    }
+
     override fun onAttach(context: Context) {
         loadKoinModules(addFragmentViewModel)
 
@@ -41,17 +48,17 @@ class AddEmployeeFragment : BaseFragment() {
     ): View? = inflater.inflate(R.layout.fragment_add_employee, container, false).apply {
         addEmployeeRecycler.setController(epoxyController)
         epoxyController.onRestoreInstanceState(savedInstanceState)
-        epoxyController.requestModelBuild()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        addEmployeeButton.setOnClickListener {
-            Timber.i("TESTING addEmployeeButtonClicked ")
-            Timber.i("TESTING ${epoxyController.getEmployee()} ")
-            viewModel.addEmployee(epoxyController.getEmployee() ?: return@setOnClickListener)
+        args.employee?.let { employee ->
+            epoxyController.setNewEmployee(employee)
         }
+        epoxyController.requestModelBuild()
+
+        addEmployeeButton.setOnClickListener { viewModel.addEmployee(epoxyController.getEmployee()) }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

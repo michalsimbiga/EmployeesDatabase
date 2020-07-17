@@ -46,5 +46,7 @@ class EmployeeItemView @JvmOverloads constructor(
         homeEmployeeName.text = ""
         homeEmployeeAge.text = ""
         homeEmployeeGender.text = ""
+        homeEditEmployeeButton.setOnClickListener(null)
+        homeDeleteEmployeeButton.setOnClickListener(null)
     }
 }

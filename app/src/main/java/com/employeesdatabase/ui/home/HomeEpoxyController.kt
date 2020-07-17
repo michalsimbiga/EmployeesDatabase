@@ -5,10 +5,12 @@ import com.employeesdatabase.models.EmployeeItem
 import com.employeesdatabase.ui.common.emptyItemView
 import com.employeesdatabase.ui.home.view.employeeAddressItemView
 import com.employeesdatabase.ui.home.view.employeeItemView
-import timber.log.Timber
+
+typealias employeeItemCallback = ((EmployeeItem) -> Unit)?
 
 class HomeEpoxyController(
-    private var onDeleteEmployeeCallback: ((EmployeeItem) -> Unit)? = null
+    private var onDeleteEmployeeCallback: employeeItemCallback = null,
+    private var onEditEmployeeCallback: employeeItemCallback = null
 ) : TypedEpoxyController<List<EmployeeItem>>() {
 
     override fun buildModels(employeeList: List<EmployeeItem>?) {
@@ -17,7 +19,7 @@ class HomeEpoxyController(
                 id(employeeItem.hashCode())
                 employeeModel(employeeItem)
                 onDeleteButtonCallback { _ -> onDeleteEmployeeCallback?.invoke(employeeItem) }
-                onEditButtonCallback { _ -> Timber.i("TESTING edit button") }
+                onEditButtonCallback { _ -> onEditEmployeeCallback?.invoke(employeeItem) }
             }
             employeeItem.addressess.forEach { addressItem ->
                 employeeAddressItemView {
@@ -33,6 +35,7 @@ class HomeEpoxyController(
 
     fun clearCallbacks() {
         onDeleteEmployeeCallback = null
+        onEditEmployeeCallback = null
     }
 
     companion object {

@@ -6,13 +6,20 @@ import com.employeesdatabase.models.AddressItem
 import com.employeesdatabase.models.EmployeeItem
 import com.employeesdatabase.ui.addEmployee.view.*
 import com.employeesdatabase.ui.common.emptyItemView
+import timber.log.Timber
 
 class AddEmployeeEpoxyController : EpoxyController() {
 
     private val listOfAddresses = mutableListOf<AddressItem>()
     private var employee: EmployeeItem = EmployeeItem()
 
+    fun setNewEmployee(newEmployee: EmployeeItem) {
+        employee = newEmployee
+        listOfAddresses.addAll(newEmployee.addressess)
+    }
+
     override fun buildModels() {
+        Timber.i("TESTING buildModels $employee")
         editableEmployeeItemView {
             id(EMPLOYEE_ITEM_VIEW_ID)
             employeeModel(employee)
@@ -27,15 +34,15 @@ class AddEmployeeEpoxyController : EpoxyController() {
                     id(index)
                     addressModel(addressItem)
                     onEditButtonCallback { _ ->
-                        with(listOfAddresses) {
-                            removeAt(index)
-                            add(index, addressItem.copy(editable = true))
+                        withRequestModelBuild {
+                            with(listOfAddresses) {
+                                removeAt(index)
+                                add(index, addressItem.copy(editable = true))
+                            }
                         }
-                        requestModelBuild()
                     }
                     onDiscardButtonCallback { _ ->
-                        listOfAddresses.removeAt(index)
-                        requestModelBuild()
+                        withRequestModelBuild { listOfAddresses.removeAt(index) }
                     }
                 }
             } else {
@@ -55,7 +62,6 @@ class AddEmployeeEpoxyController : EpoxyController() {
                     }
                 }
             }
-
         }
         addAddressButtonItemView {
             id(ADD_ADDRESS_ITEM_VIEW_ID)
@@ -66,9 +72,7 @@ class AddEmployeeEpoxyController : EpoxyController() {
         }
     }
 
-    fun getEmployee(): EmployeeItem? {
-        return employee.copy(addressess = listOfAddresses.filterNot(AddressItem::isEmpty))
-    }
+    fun getEmployee() = employee.copy(addressess = listOfAddresses.filterNot(AddressItem::isEmpty))
 
     private fun setEmployee(block: EmployeeItem.() -> EmployeeItem) {
         employee = block(employee)
@@ -95,7 +99,6 @@ class AddEmployeeEpoxyController : EpoxyController() {
         private const val EMPLOYEE_PARCEL_KEY = "Employee"
         private const val EMPLOYEE_ITEM_VIEW_ID = "HomeEpoxyControllerEmployeeItemId"
         private const val EMPTY_ITEM_VIEW_ID = "HomeEpoxyControllerEmptyItemId"
-        private const val HEADER_ITEM_VIEW_ID = "HomeEpoxyControllerHeaderItemId"
         private const val ADD_ADDRESS_ITEM_VIEW_ID = "HomeEpoxyControllerAddAddressItemId"
     }
 }

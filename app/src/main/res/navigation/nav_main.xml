@@ -9,13 +9,33 @@
         android:id="@+id/homeFragment"
         android:name="com.employeesdatabase.ui.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_home_to_edit"
+            app:destination="@id/addEmployeeFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="false">
+            <argument
+                android:name="employee"
+                app:argType="com.employeesdatabase.models.EmployeeItem" />
+
+        </action>
+
+    </fragment>
 
     <fragment
         android:id="@+id/addEmployeeFragment"
         android:name="com.employeesdatabase.ui.addEmployee.AddEmployeeFragment"
         android:label="AddEmployeeFragment"
         tools:layout="@layout/fragment_add_employee">
+
+        <argument
+            android:name="employee"
+            android:defaultValue="@null"
+            app:argType="com.employeesdatabase.models.EmployeeItem"
+            app:nullable="true" />
 
         <action
             android:id="@+id/action_edit_to_home"
