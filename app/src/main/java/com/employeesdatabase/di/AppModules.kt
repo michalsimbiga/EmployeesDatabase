@@ -46,7 +46,8 @@ val addFragmentViewModel = module {
     viewModel { (state: AddEmployeeViewState) ->
         AddEmployeeViewModel(
             state = state,
-            insertOrReplaceEmployeeUseCase = get()
+            insertOrReplaceEmployeeUseCase = get(),
+            deleteAddressByIdUseCase = get()
         )
     }
 }

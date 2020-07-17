@@ -75,9 +75,9 @@ class EditableEmployeeItemView @JvmOverloads constructor(
 
     @OnViewRecycled
     fun onViewRecycled() {
-        editableEmployeeFirstNameTextEdit.clearComposingText()
-        editableEmployeeLastNameTextEdit.clearComposingText()
-        editableEmployeeAgeTextEdit.clearComposingText()
+        editableEmployeeFirstNameTextEdit.setText("")
+        editableEmployeeLastNameTextEdit.setText("")
+        editableEmployeeAgeTextEdit.setText("")
         editableEmployeeGenderRadioGroup.clearCheck()
     }
 

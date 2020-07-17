@@ -4,6 +4,7 @@ import com.employeesdatabase.AddressDb
 import com.employeesdatabase.AddressDbQueries
 import com.employeesdatabase.EmployeeDb
 import com.employeesdatabase.EmployeesDbQueries
+import com.employeesdatabase.models.AddressEntity
 import com.employeesdatabase.models.Employee
 import com.employeesdatabase.models.EmployeeEntity
 import com.employeesdatabase.models.toEntity
@@ -38,23 +39,26 @@ class EmployeesDao(
             )
 
             addressess.forEach { address ->
-                with(address) {
-                    addressDbQueries.insertOrReplace(
-                        street = street,
-                        city = city,
-                        zip = zip,
-                        country = country,
-                        employeeId = employeesDbQueries.selectByAllFields(
-                            firstName,
-                            lastName,
-                            age,
-                            gender
-                        ).executeAsOne().id.toInt()
-                    )
-                }
+                val employeeId =
+                    employeesDbQueries.selectByAllFields(firstName, lastName, age, gender)
+                        .executeAsOne().id.toInt()
+                insertAddress(address, employeeId)
             }
         }
     }
+
+    fun insertAddress(address: AddressEntity, employeeId: Int) = with(address) {
+        addressDbQueries.insertOrReplace(
+            street = street,
+            city = city,
+            zip = zip,
+            country = country,
+            employeeId = employeeId
+        )
+    }
+
+    fun deleteAddress(address: AddressEntity) =
+        addressDbQueries.deleteById(address.id.toLong())
 
     fun deleteEmployee(employee: EmployeeEntity) =
         employeesDbQueries.deleteEmployeeById(employee.id.toLong())

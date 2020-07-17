@@ -13,6 +13,7 @@ import com.airbnb.mvrx.withState
 import com.employeesdatabase.R
 import com.employeesdatabase.common.BaseFragment
 import com.employeesdatabase.di.addFragmentViewModel
+import com.employeesdatabase.models.AddressItem
 import kotlinx.android.synthetic.main.fragment_add_employee.*
 import kotlinx.android.synthetic.main.fragment_add_employee.view.*
 import org.koin.core.context.loadKoinModules
@@ -21,7 +22,11 @@ import timber.log.Timber
 
 class AddEmployeeFragment : BaseFragment() {
 
-    private val epoxyController by lazy { AddEmployeeEpoxyController() }
+    private val epoxyController by lazy {
+        AddEmployeeEpoxyController(
+            onDeleteAddressCallback = ::deleteAddress
+        )
+    }
 
     private val viewModel: AddEmployeeViewModel by fragmentViewModel()
 
@@ -29,6 +34,10 @@ class AddEmployeeFragment : BaseFragment() {
 
     init {
         Timber.i("TESTING AddEmployeeFragment created")
+    }
+
+    private fun deleteAddress(address: AddressItem) {
+        viewModel.deleteAddress(address)
     }
 
     override fun onAttach(context: Context) {
@@ -55,6 +64,7 @@ class AddEmployeeFragment : BaseFragment() {
 
         args.employee?.let { employee ->
             epoxyController.setNewEmployee(employee)
+            viewModel.setEditMode()
         }
         epoxyController.requestModelBuild()
 
@@ -74,6 +84,7 @@ class AddEmployeeFragment : BaseFragment() {
 
     override fun onDestroyView() {
         addEmployeeButton.setOnClickListener(null)
+        epoxyController.clearCallbacks()
 
         super.onDestroyView()
     }

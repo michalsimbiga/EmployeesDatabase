@@ -3,10 +3,7 @@ package com.employeesdatabase.repository
 import com.employeesdatabase.common.Result
 import com.employeesdatabase.common.safeCall
 import com.employeesdatabase.dataSource.LocalDataSource
-import com.employeesdatabase.models.Employee
-import com.employeesdatabase.models.EmployeeEntity
-import com.employeesdatabase.models.toDomain
-import com.employeesdatabase.models.toEntity
+import com.employeesdatabase.models.*
 
 class EmployeesRepositoryImpl(private val localDataSource: LocalDataSource) : EmployeesRepository {
 
@@ -23,6 +20,13 @@ class EmployeesRepositoryImpl(private val localDataSource: LocalDataSource) : Em
     override suspend fun insertEmployee(employee: Employee): Result<Unit> =
         safeCall { localDataSource.insertEmployee(employee = employee.toEntity()) }
 
+    override suspend fun editEmployee(employee: Employee): Result<Unit> {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun deleteEmployee(employee: Employee): Result<Unit> =
         safeCall { localDataSource.deleteEmployee(employee = employee.toEntity()) }
+
+    override suspend fun deleteAddress(address: Address): Result<Unit> =
+        safeCall { localDataSource.deleteAddress(address = address.toEntity()) }
 }

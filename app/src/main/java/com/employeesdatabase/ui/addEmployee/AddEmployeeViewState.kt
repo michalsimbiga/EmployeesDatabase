@@ -5,4 +5,7 @@ import com.airbnb.mvrx.MvRxState
 import com.airbnb.mvrx.Uninitialized
 import com.employeesdatabase.common.Result
 
-data class AddEmployeeViewState(val addUserResult: Async<Unit> = Uninitialized) : MvRxState
+data class AddEmployeeViewState(
+    val addUserResult: Async<Unit> = Uninitialized,
+    val editingEmployee: Boolean = false
+) : MvRxState

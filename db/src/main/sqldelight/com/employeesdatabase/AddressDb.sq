@@ -22,3 +22,6 @@ SELECT * FROM AddressDb;
 
 selectByEmployeeId:
 SELECT * FROM AddressDb WHERE employeeId = ?;
+
+deleteById:
+DELETE FROM AddressDb WHERE id = ?;

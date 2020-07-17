@@ -6,9 +6,12 @@ import com.employeesdatabase.models.AddressItem
 import com.employeesdatabase.models.EmployeeItem
 import com.employeesdatabase.ui.addEmployee.view.*
 import com.employeesdatabase.ui.common.emptyItemView
+import com.employeesdatabase.UNINITIALIZED
 import timber.log.Timber
 
-class AddEmployeeEpoxyController : EpoxyController() {
+class AddEmployeeEpoxyController(
+    private var onDeleteAddressCallback: ((AddressItem) -> Unit)? = null
+) : EpoxyController() {
 
     private val listOfAddresses = mutableListOf<AddressItem>()
     private var employee: EmployeeItem = EmployeeItem()
@@ -19,7 +22,6 @@ class AddEmployeeEpoxyController : EpoxyController() {
     }
 
     override fun buildModels() {
-        Timber.i("TESTING buildModels $employee")
         editableEmployeeItemView {
             id(EMPLOYEE_ITEM_VIEW_ID)
             employeeModel(employee)
@@ -42,7 +44,13 @@ class AddEmployeeEpoxyController : EpoxyController() {
                         }
                     }
                     onDiscardButtonCallback { _ ->
-                        withRequestModelBuild { listOfAddresses.removeAt(index) }
+                        withRequestModelBuild {
+                            if (addressItem.id != UNINITIALIZED) {
+                                onDeleteAddressCallback?.invoke(addressItem)
+                                listOfAddresses.remove(addressItem)
+                            }
+                            else listOfAddresses.removeAt(index)
+                        }
                     }
                 }
             } else {
@@ -81,6 +89,10 @@ class AddEmployeeEpoxyController : EpoxyController() {
     private fun withRequestModelBuild(callback: () -> Unit) {
         callback()
         requestModelBuild()
+    }
+
+    fun clearCallbacks() {
+        onDeleteAddressCallback = null
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
