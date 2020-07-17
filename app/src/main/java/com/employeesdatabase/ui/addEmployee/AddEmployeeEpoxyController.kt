@@ -11,7 +11,11 @@ import timber.log.Timber
 
 class AddEmployeeEpoxyController : EpoxyController() {
 
-    private val listOfAddressess = mutableListOf<AddressItem>()
+    init {
+        Timber.i("TESTING init AddEmployeeEpoxy")
+    }
+
+    private val listOfAddresses = mutableListOf<AddressItem>()
     private var employee: EmployeeItem = EmployeeItem()
         set(value) {
             field = value
@@ -19,12 +23,14 @@ class AddEmployeeEpoxyController : EpoxyController() {
         }
 
     override fun onSaveInstanceState(outState: Bundle) {
+        Timber.i("TESTING onSAveInstanceState $employee")
         outState.putParcelable("Employee", employee)
         super.onSaveInstanceState(outState)
     }
 
     override fun onRestoreInstanceState(inState: Bundle?) {
         inState?.getParcelable<EmployeeItem>("Employee")?.let { savedEmployee ->
+            Timber.i("TESTING savedEmployee $savedEmployee")
             employee = savedEmployee
         }
         super.onRestoreInstanceState(inState)
@@ -35,8 +41,8 @@ class AddEmployeeEpoxyController : EpoxyController() {
             id(HEADER_ITEM_VIEW_ID)
             headerText(R.string.employee_detail_header)
         }
-        editableEmployeeItemVIew {
-            id(employee.hashCode())
+        editableEmployeeItemView {
+            id(EMPLOYEE_ITEM_VIEW_ID)
             employeeModel(employee)
             onFirstNameChangedCallback { firstName ->
                 employee = employee.copy(firstName = firstName)
@@ -47,18 +53,18 @@ class AddEmployeeEpoxyController : EpoxyController() {
             onAgeChangedCallback { age -> employee = employee.copy(age = age.toInt()) }
             onGenderChangedCallback { gender -> employee = employee.copy(gender = gender) }
         }
-        listOfAddressess.forEachIndexed { index, addressItem ->
+        listOfAddresses.forEachIndexed { index, addressItem ->
             if (addressItem.editable.not()) {
                 addressItemView {
                     id(index)
                     addressModel(addressItem)
                     onEditButtonCallback { _ ->
-                        listOfAddressess.removeAt(index)
-                        listOfAddressess.add(index, addressItem.copy(editable = true))
+                        listOfAddresses.removeAt(index)
+                        listOfAddresses.add(index, addressItem.copy(editable = true))
                         requestModelBuild()
                     }
                     onDiscardButtonCallback { _ ->
-                        listOfAddressess.removeAt(index)
+                        listOfAddresses.removeAt(index)
                         requestModelBuild()
                     }
                 }
@@ -67,13 +73,13 @@ class AddEmployeeEpoxyController : EpoxyController() {
                     id(index)
                     addressModel(addressItem)
                     onDiscardButtonCallback { _ ->
-                        listOfAddressess.removeAt(index)
+                        listOfAddresses.removeAt(index)
                         requestModelBuild()
                     }
                     onAddButtonCallback { addressModel ->
                         Timber.i("TESTING onAddButtonClicked $addressModel")
-                        listOfAddressess.removeAt(index)
-                        listOfAddressess.add(addressModel)
+                        listOfAddresses.removeAt(index)
+                        listOfAddresses.add(addressModel)
                         requestModelBuild()
                     }
                 }
@@ -83,8 +89,7 @@ class AddEmployeeEpoxyController : EpoxyController() {
         addAddressButtonItemView {
             id(ADD_ADDRESS_ITEM_VIEW_ID)
             onAddAddressCallback { _ ->
-                Timber.i("TESTING buttonClicked")
-                listOfAddressess.add(AddressItem())
+                listOfAddresses.add(AddressItem())
                 requestModelBuild()
             }
         }
@@ -94,12 +99,12 @@ class AddEmployeeEpoxyController : EpoxyController() {
     }
 
     fun getEmployee(): EmployeeItem? {
-        Timber.i("TESTING getEmployee $employee ${listOfAddressess}")
-        return employee?.copy(addressess = listOfAddressess.filterNot(AddressItem::isEmpty))
+        Timber.i("TESTING getEmployee $employee ${listOfAddresses}")
+        return employee.copy(addressess = listOfAddresses.filterNot(AddressItem::isEmpty))
     }
 
-
     companion object {
+        private const val EMPLOYEE_ITEM_VIEW_ID = "HomeEpoxyControllerEmployeeItemId"
         private const val EMPTY_ITEM_VIEW_ID = "HomeEpoxyControllerEmptyItemId"
         private const val HEADER_ITEM_VIEW_ID = "HomeEpoxyControllerHeaderItemId"
         private const val ADD_ADDRESS_ITEM_VIEW_ID = "HomeEpoxyControllerAddAddressItemId"

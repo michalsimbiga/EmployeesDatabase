@@ -22,6 +22,6 @@ class AddAddressButtonItemView @JvmOverloads constructor(
 
     @CallbackProp
     fun setOnAddAddressCallback(onAddAddressCallback: OnClickListener?) {
-        addAddressButton.setOnClickListener(onAddAddressCallback)
+        addAddressButton.setOnClickListener(onAddAddressCallback).also { rootView.clearFocus() }
     }
 }
