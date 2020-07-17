@@ -1,11 +1,12 @@
 package com.employeesdatabase.models
 
 data class AddressItem(
-    var street: String = "",
-    var city: String = "",
-    var zip: String = "",
-    var country: String = "",
-    var editable: Boolean = true
+    val id: Int = -1,
+    val street: String = "",
+    val city: String = "",
+    val zip: String = "",
+    val country: String = "",
+    val editable: Boolean = true
 ) {
     fun isEmpty() =
         street.trim() == "" && city.trim() == "" && zip.trim() == "" && country.trim() == ""
@@ -13,6 +14,7 @@ data class AddressItem(
 
 fun AddressItem.toDomain() =
     Address(
+        id = id,
         street = street,
         city = city,
         zip = zip,
@@ -21,6 +23,7 @@ fun AddressItem.toDomain() =
 
 fun Address.toItem() =
     AddressItem(
+        id = id,
         street = street,
         city = city,
         zip = zip,

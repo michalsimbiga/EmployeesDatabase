@@ -1,5 +1,6 @@
 package com.employeesdatabase.dao
 
+import com.employeesdatabase.AddressDb
 import com.employeesdatabase.AddressDbQueries
 import com.employeesdatabase.EmployeeDb
 import com.employeesdatabase.EmployeesDbQueries
@@ -16,19 +17,12 @@ class EmployeesDao(
         val employeeEntityList = mutableListOf<EmployeeEntity>()
 
         employeesDbQueries.selectAll().executeAsList().forEach { employee ->
-            val addressess =
-                addressDbQueries.selectByEmployeeId(employee.id.toInt()).executeAsList()
-                    .map { it.toEntity() }
+            val addressess = addressDbQueries
+                .selectByEmployeeId(employee.id.toInt())
+                .executeAsList()
+                .map(AddressDb::toEntity)
 
-            employeeEntityList.add(
-                EmployeeEntity(
-                    employee.firstName,
-                    employee.lastName,
-                    employee.age,
-                    employee.gender,
-                    addressess
-                )
-            )
+            employeeEntityList.add(employee.toEntity().copy(addressess = addressess))
         }
 
         return employeeEntityList

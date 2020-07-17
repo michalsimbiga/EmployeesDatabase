@@ -1,6 +1,9 @@
 package com.employeesdatabase.models
 
+import com.employeesdatabase.EmployeeDb
+
 data class EmployeeItem(
+    val id: Int = -1,
     val firstName: String = "",
     val lastName: String = "",
     val age: Int = -1,
@@ -10,6 +13,7 @@ data class EmployeeItem(
 
 fun Employee.toItem() =
     EmployeeItem(
+        id = id,
         firstName = firstName,
         lastName = lastName,
         age = age,
@@ -19,6 +23,7 @@ fun Employee.toItem() =
 
 fun EmployeeItem.toDomain() =
     Employee(
+        id = id,
         firstName = firstName,
         lastName = lastName,
         age = age,

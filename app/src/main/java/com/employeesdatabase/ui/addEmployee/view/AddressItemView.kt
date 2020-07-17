@@ -10,7 +10,6 @@ import com.airbnb.epoxy.ModelView
 import com.employeesdatabase.R
 import com.employeesdatabase.models.AddressItem
 import kotlinx.android.synthetic.main.item_address_view.view.*
-import kotlinx.android.synthetic.main.item_editable_address.view.*
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class AddressItemView @JvmOverloads constructor(

@@ -3,6 +3,7 @@ package com.employeesdatabase.models
 import com.employeesdatabase.EmployeeDb
 
 data class EmployeeEntity(
+    val id: Int,
     val firstName: String,
     val lastName: String,
     val age: Int,
@@ -12,6 +13,7 @@ data class EmployeeEntity(
 
 fun EmployeeEntity.toDomain() =
     Employee(
+        id = id,
         firstName = firstName,
         lastName = lastName,
         age = age,
@@ -19,8 +21,19 @@ fun EmployeeEntity.toDomain() =
         addressess = addressess.map { it.toDomain() }
     )
 
+fun EmployeeDb.toEntity() =
+    EmployeeEntity(
+        id = id.toInt(),
+        firstName = firstName,
+        lastName = lastName,
+        age = age,
+        gender = gender,
+        addressess = listOf()
+    )
+
 fun Employee.toEntity() =
     EmployeeEntity(
+        id = id,
         firstName = firstName,
         lastName = lastName,
         age = age,

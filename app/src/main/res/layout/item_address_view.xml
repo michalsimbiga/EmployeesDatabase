@@ -23,39 +23,76 @@
         app:layout_constraintTop_toTopOf="@id/removeAddressButton" />
 
     <TextView
-        android:id="@+id/streetTextView"
-        android:layout_width="0dp"
+        android:id="@+id/streetHeaderTextView"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:text="Street: "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editAddressButton"
-        tools:text="Aleja Wolnosci 12/2" />
+        app:layout_constraintTop_toBottomOf="@id/editAddressButton" />
 
     <TextView
-        android:id="@+id/cityTextView"
-        android:layout_width="0dp"
+        android:id="@+id/streetTextView"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/streetTextView"
-        app:layout_constraintStart_toStartOf="@id/streetTextView"
-        app:layout_constraintTop_toBottomOf="@id/streetTextView"
-        tools:text="Niemodlin" />
+        android:layout_width="0dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/streetHeaderTextView"
+        app:layout_constraintTop_toTopOf="@id/streetHeaderTextView"
+        tools:text="Sw. Macierewicza 11/4" />
+
+    <TextView
+        android:id="@+id/zipHeaderTextView"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Zip: "
+        app:layout_constraintStart_toStartOf="@id/streetHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@id/streetHeaderTextView" />
 
     <TextView
         android:id="@+id/zipTextView"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/cityTextView"
-        app:layout_constraintTop_toBottomOf="@id/cityTextView"
-        tools:text="23-123" />
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/zipHeaderTextView"
+        app:layout_constraintTop_toTopOf="@id/zipHeaderTextView"
+        tools:text="55-211" />
+
+    <TextView
+        android:id="@+id/cityHeaderTextView"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:text="City: "
+        app:layout_constraintStart_toEndOf="@id/zipTextView"
+        app:layout_constraintTop_toTopOf="@id/zipHeaderTextView" />
+
+    <TextView
+        android:id="@+id/cityTextView"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cityHeaderTextView"
+        app:layout_constraintTop_toTopOf="@id/cityHeaderTextView"
+        tools:text="Warszawa" />
+
+    <TextView
+        android:id="@+id/countryHeaderTextView"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Country: "
+        app:layout_constraintStart_toStartOf="@id/zipHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@id/zipHeaderTextView" />
 
     <TextView
         android:id="@+id/countryTextView"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        app:layout_constraintEnd_toEndOf="@id/cityTextView"
-        app:layout_constraintStart_toEndOf="@id/zipTextView"
-        app:layout_constraintTop_toTopOf="@id/zipTextView"
-        tools:text="Polska" />
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/countryHeaderTextView"
+        app:layout_constraintTop_toTopOf="@id/countryHeaderTextView"
+        tools:text="Polandball" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
