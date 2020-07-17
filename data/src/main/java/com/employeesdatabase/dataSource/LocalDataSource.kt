@@ -5,6 +5,7 @@ import com.employeesdatabase.models.EmployeeEntity
 
 class LocalDataSource(private val employeesDao: EmployeesDao) {
 
-    fun insertEmployee(employeeEntity: EmployeeEntity) = employeesDao.insertEmployee(employeeEntity)
+    fun insertEmployee(employee: EmployeeEntity) = employeesDao.insertEmployee(employee)
     fun getAllEmployees() = employeesDao.getAllEmployees()
+    fun deleteEmployee(employee: EmployeeEntity) = employeesDao.deleteEmployee(employee)
 }

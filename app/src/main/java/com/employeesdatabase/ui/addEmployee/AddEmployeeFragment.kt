@@ -30,7 +30,7 @@ class AddEmployeeFragment : BaseFragment() {
     }
 
     override fun invalidate() = withState(viewModel) { state ->
-        if (state.addUserResult is Success) findNavController().popBackStack()
+        if (state.addUserResult is Success) findNavController().navigate(R.id.action_edit_to_home)
     }
 
     override fun onCreateView(

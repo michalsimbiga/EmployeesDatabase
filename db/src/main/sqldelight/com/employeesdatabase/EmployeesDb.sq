@@ -22,3 +22,6 @@ SELECT * FROM EmployeeDb WHERE id = ?;
 
 selectByAllFields:
 SELECT * FROM EmployeeDb WHERE firstName = ? AND lastName = ? AND age = ? AND gender = ?;
+
+deleteEmployeeById:
+DELETE FROM EmployeeDb WHERE id = ?;

@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
@@ -22,6 +23,16 @@ class EmployeeItemView @JvmOverloads constructor(
         View.inflate(context, R.layout.fragment_home_employee_item, this)
     }
 
+    @CallbackProp
+    fun setOnDeleteButtonCallback(onDeleteButtonListener: OnClickListener?) {
+        homeDeleteEmployeeButton.setOnClickListener(onDeleteButtonListener)
+    }
+
+    @CallbackProp
+    fun setOnEditButtonCallback(onEditButtonListener: OnClickListener?) {
+        homeEditEmployeeButton.setOnClickListener(onEditButtonListener)
+    }
+
     @ModelProp
     fun setEmployeeModel(employee: EmployeeItem?) {
         val fullName = employee?.firstName + " " + employee?.lastName
@@ -31,7 +42,7 @@ class EmployeeItemView @JvmOverloads constructor(
     }
 
     @OnViewRecycled
-    fun onViewRecycled(){
+    fun onViewRecycled() {
         homeEmployeeName.text = ""
         homeEmployeeAge.text = ""
         homeEmployeeGender.text = ""

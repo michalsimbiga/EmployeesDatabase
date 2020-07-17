@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.airbnb.mvrx.Success
 import com.airbnb.mvrx.fragmentViewModel
@@ -21,7 +22,11 @@ class HomeFragment : BaseFragment() {
 
     private val viewModel: HomeViewModel by fragmentViewModel()
 
-    private val epoxyController by lazy { HomeEpoxyController() }
+    private val epoxyController by lazy {
+        HomeEpoxyController(
+            onDeleteEmployeeCallback = { employee -> viewModel.deleteEmployee(employee) }
+        )
+    }
 
     override fun invalidate() = withState(viewModel) { state ->
         if (state.listOfEmployees is Success) epoxyController.setData(state.listOfEmployees.invoke())
@@ -57,6 +62,7 @@ class HomeFragment : BaseFragment() {
 
     override fun onDestroyView() {
         addButton.setOnClickListener(null)
+        epoxyController.clearCallbacks()
 
         super.onDestroyView()
     }

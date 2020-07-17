@@ -55,7 +55,8 @@ val homeFragmentViewModel = module {
     viewModel { (state: HomeViewState) ->
         HomeViewModel(
             state = state,
-            getAllEmployeesUseCase = get()
+            getAllEmployeesUseCase = get(),
+            deleteEmployeeUseCase = get()
         )
     }
 }

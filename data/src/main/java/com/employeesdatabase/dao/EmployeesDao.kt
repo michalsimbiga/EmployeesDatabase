@@ -55,4 +55,7 @@ class EmployeesDao(
             }
         }
     }
+
+    fun deleteEmployee(employee: EmployeeEntity) =
+        employeesDbQueries.deleteEmployeeById(employee.id.toLong())
 }

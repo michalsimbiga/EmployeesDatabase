@@ -21,9 +21,8 @@ class EmployeesRepositoryImpl(private val localDataSource: LocalDataSource) : Em
     }
 
     override suspend fun insertEmployee(employee: Employee): Result<Unit> =
-        safeCall { localDataSource.insertEmployee(employee.toEntity()) }
+        safeCall { localDataSource.insertEmployee(employee = employee.toEntity()) }
 
-    override suspend fun deleteEmployee(employee: Employee): Result<Unit> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun deleteEmployee(employee: Employee): Result<Unit> =
+        safeCall { localDataSource.deleteEmployee(employee = employee.toEntity()) }
 }
