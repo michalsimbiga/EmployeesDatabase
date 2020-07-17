@@ -11,7 +11,7 @@ data class AddressItem(
     val zip: String = "",
     val country: String = "",
     val editable: Boolean = true
-): Parcelable {
+) : Parcelable {
     fun isEmpty() =
         street.trim() == "" && city.trim() == "" && zip.trim() == "" && country.trim() == ""
 }

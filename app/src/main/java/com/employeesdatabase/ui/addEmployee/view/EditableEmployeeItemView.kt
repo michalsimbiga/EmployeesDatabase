@@ -1,7 +1,6 @@
 package com.employeesdatabase.ui.addEmployee.view
 
 import android.content.Context
-import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
@@ -12,9 +11,9 @@ import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
 import com.employeesdatabase.R
+import com.employeesdatabase.extensions.onNotBlankCallback
 import com.employeesdatabase.models.EmployeeItem
 import kotlinx.android.synthetic.main.fragment_add_editable_employee_item.view.*
-import timber.log.Timber
 
 typealias stringCallback = ((String) -> Unit)?
 
@@ -31,11 +30,10 @@ class EditableEmployeeItemView @JvmOverloads constructor(
 
     @ModelProp
     fun setEmployeeModel(employee: EmployeeItem?) {
-        Timber.i("TESTING setEmployeeModel $employee")
         editableEmployeeFirstNameTextEdit.setText(employee?.firstName)
         editableEmployeeLastNameTextEdit.setText(employee?.lastName)
         employee?.age?.let { age ->
-            if (age in 0..100) editableEmployeeAgeTextEdit.setText(age.toString())
+            if (age in AGE_RANGE) editableEmployeeAgeTextEdit.setText(age.toString())
         }
 
         with(context) {
@@ -52,30 +50,26 @@ class EditableEmployeeItemView @JvmOverloads constructor(
     @CallbackProp
     fun setOnGenderChangedCallback(onGenderChangedListener: stringCallback) =
         editableEmployeeGenderRadioGroup.setOnCheckedChangeListener { radioGroup, buttonId ->
-            Timber.i("TESTING setOnGenderChangedCallback $buttonId")
             val buttonText = radioGroup?.findViewById<RadioButton>(buttonId)?.text
             onGenderChangedListener?.invoke(buttonText.toString())
         }
 
     @CallbackProp
-    fun setOnFirstNameChangedCallback(onFirstNameTextChangedListener: stringCallback) =
+    fun setOnFirstNameChangedCallback(textChangedCallback: stringCallback) =
         editableEmployeeFirstNameTextEdit.doAfterTextChanged { editable ->
-            Timber.i("TESTING setOnFirstNameChangedCallback $editable")
-            if (editable?.isNotBlank() == true) onFirstNameTextChangedListener?.invoke(editable.toString())
+            editable?.onNotBlankCallback { textChangedCallback?.invoke(editable.toString()) }
         }
 
     @CallbackProp
-    fun setOnLastNameChangedCallback(onLastNameChangedListener: stringCallback) =
+    fun setOnLastNameChangedCallback(textChangedCallback: stringCallback) =
         editableEmployeeLastNameTextEdit.doAfterTextChanged { editable ->
-            Timber.i("TESTING setOnLastNameChangedCallback $editable")
-            if (editable?.isNotBlank() == true) onLastNameChangedListener?.invoke(editable.toString())
+            editable?.onNotBlankCallback { textChangedCallback?.invoke(editable.toString()) }
         }
 
     @CallbackProp
-    fun setOnAgeChangedCallback(onAgeChangedListener: stringCallback) =
+    fun setOnAgeChangedCallback(textChangedCallback: stringCallback) =
         editableEmployeeAgeTextEdit.doAfterTextChanged { editable ->
-            Timber.i("TESTING setOnAgeChangedCallback $editable")
-            if (editable?.isNotBlank() == true) onAgeChangedListener?.invoke(editable.toString())
+            editable?.onNotBlankCallback { textChangedCallback?.invoke(editable.toString()) }
         }
 
     @OnViewRecycled
@@ -84,5 +78,9 @@ class EditableEmployeeItemView @JvmOverloads constructor(
         editableEmployeeLastNameTextEdit.clearComposingText()
         editableEmployeeAgeTextEdit.clearComposingText()
         editableEmployeeGenderRadioGroup.clearCheck()
+    }
+
+    companion object {
+        private val AGE_RANGE = 0..100
     }
 }

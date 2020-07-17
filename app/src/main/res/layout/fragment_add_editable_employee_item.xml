@@ -5,6 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/editableEmployeeHeaderHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="@string/employee_detail_header"
+        tools:text="Example header"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editableEmployeeFirstNameLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -58,6 +68,16 @@
             tools:hint="Example hint"
             tools:text="56" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/editableEmployeeGenderHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="@string/gender_header"
+        tools:text="Example header"/>
 
     <RadioGroup
         android:id="@+id/editableEmployeeGenderRadioGroup"
