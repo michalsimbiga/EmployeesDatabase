@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class EmployeeItem(
-    val id: Int = -1,
+    val id: Long = -1,
     val firstName: String = "",
     val lastName: String = "",
     val age: Int = -1,

@@ -1,7 +1,7 @@
 package com.employeesdatabase.models
 
 data class Employee(
-    val id: Int,
+    val id: Long,
     val firstName: String,
     val lastName: String,
     val age: Int,

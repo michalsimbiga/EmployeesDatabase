@@ -1,9 +1,6 @@
 package com.employeesdatabase.dao
 
-import com.employeesdatabase.AddressDb
-import com.employeesdatabase.AddressDbQueries
-import com.employeesdatabase.EmployeeDb
-import com.employeesdatabase.EmployeesDbQueries
+import com.employeesdatabase.*
 import com.employeesdatabase.models.AddressEntity
 import com.employeesdatabase.models.Employee
 import com.employeesdatabase.models.EmployeeEntity
@@ -19,7 +16,7 @@ class EmployeesDao(
 
         employeesDbQueries.selectAll().executeAsList().forEach { employee ->
             val addressess = addressDbQueries
-                .selectByEmployeeId(employee.id.toInt())
+                .selectByEmployeeId(employee.id)
                 .executeAsList()
                 .map(AddressDb::toEntity)
 
@@ -32,23 +29,26 @@ class EmployeesDao(
     fun insertEmployee(employeeEntity: EmployeeEntity) {
         with(employeeEntity) {
             employeesDbQueries.insertOrReplace(
+                id = if(id != UNINITIALIZED) id else null,
                 firstName = firstName,
                 lastName = lastName,
                 age = age,
                 gender = gender
             )
 
+            val employeeId =
+                employeesDbQueries.selectByAllFields(firstName, lastName, age, gender)
+                    .executeAsOne().id
+
             addressess.forEach { address ->
-                val employeeId =
-                    employeesDbQueries.selectByAllFields(firstName, lastName, age, gender)
-                        .executeAsOne().id.toInt()
                 insertAddress(address, employeeId)
             }
         }
     }
 
-    fun insertAddress(address: AddressEntity, employeeId: Int) = with(address) {
+    fun insertAddress(address: AddressEntity, employeeId: Long) = with(address) {
         addressDbQueries.insertOrReplace(
+            id = if(id != UNINITIALIZED) id else null,
             street = street,
             city = city,
             zip = zip,
@@ -58,8 +58,8 @@ class EmployeesDao(
     }
 
     fun deleteAddress(address: AddressEntity) =
-        addressDbQueries.deleteById(address.id.toLong())
+        addressDbQueries.deleteById(address.id ?: UNINITIALIZED)
 
     fun deleteEmployee(employee: EmployeeEntity) =
-        employeesDbQueries.deleteEmployeeById(employee.id.toLong())
+        employeesDbQueries.deleteEmployeeById(employee.id ?: UNINITIALIZED)
 }

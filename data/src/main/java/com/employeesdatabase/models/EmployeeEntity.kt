@@ -3,7 +3,7 @@ package com.employeesdatabase.models
 import com.employeesdatabase.EmployeeDb
 
 data class EmployeeEntity(
-    val id: Int,
+    val id: Long? = null,
     val firstName: String,
     val lastName: String,
     val age: Int,
@@ -13,7 +13,7 @@ data class EmployeeEntity(
 
 fun EmployeeEntity.toDomain() =
     Employee(
-        id = id,
+        id = id ?: -1,
         firstName = firstName,
         lastName = lastName,
         age = age,
@@ -23,7 +23,7 @@ fun EmployeeEntity.toDomain() =
 
 fun EmployeeDb.toEntity() =
     EmployeeEntity(
-        id = id.toInt(),
+        id = id,
         firstName = firstName,
         lastName = lastName,
         age = age,

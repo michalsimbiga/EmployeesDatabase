@@ -3,7 +3,7 @@ package com.employeesdatabase.models
 import com.employeesdatabase.AddressDb
 
 data class AddressEntity(
-    val id: Int,
+    val id: Long? = null,
     val street: String,
     val city: String,
     val zip: String,
@@ -12,7 +12,7 @@ data class AddressEntity(
 
 fun AddressDb.toEntity() =
     AddressEntity(
-        id = id.toInt(),
+        id = id,
         street = street,
         city = city,
         zip = zip,
@@ -21,7 +21,7 @@ fun AddressDb.toEntity() =
 
 fun AddressEntity.toDomain() =
     Address(
-        id = id,
+        id = id ?: -1,
         street = street,
         city = city,
         zip = zip,
