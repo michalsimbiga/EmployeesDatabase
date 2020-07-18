@@ -6,7 +6,7 @@
 * [Application Usage](#application-usage)
 
 ## Application Overview
-Simple employee database application that stores employee data in sql database and allows for basic sql operations: "ADD/GET/EDIT/DELETE" on employees database
+Simple employee database application that stores employee data in sql database and allows for basic operations: "ADD/GET/EDIT/DELETE" on database
 
 ## Technology Stack used 
 * MvRx
@@ -23,10 +23,3 @@ Simple employee database application that stores employee data in sql database a
 5. Download additional files proposed by Android Studio to build the project (e.g., build tools).
 6. Build and run the application.
 
-## Application Usage
-
-### Adding Employee
-
-### Editing Employee
-
-### Deleting Employee
