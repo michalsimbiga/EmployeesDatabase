@@ -8,6 +8,14 @@ CREATE TABLE IF NOT EXISTS EmployeeDb(
 
 insertOrReplace:
 INSERT OR REPLACE INTO EmployeeDb(
+    firstName,
+    lastName,
+    age,
+    gender
+)VALUES(?,?,?,?);
+
+update:
+INSERT OR REPLACE INTO EmployeeDb(
     id,
     firstName,
     lastName,

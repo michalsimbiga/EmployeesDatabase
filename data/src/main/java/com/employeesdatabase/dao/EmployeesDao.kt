@@ -29,7 +29,6 @@ class EmployeesDao(
     fun insertEmployee(employeeEntity: EmployeeEntity) {
         with(employeeEntity) {
             employeesDbQueries.insertOrReplace(
-                id = if(id != UNINITIALIZED) id else null,
                 firstName = firstName,
                 lastName = lastName,
                 age = age,
@@ -48,7 +47,31 @@ class EmployeesDao(
 
     fun insertAddress(address: AddressEntity, employeeId: Long) = with(address) {
         addressDbQueries.insertOrReplace(
-            id = if(id != UNINITIALIZED) id else null,
+            street = street,
+            city = city,
+            zip = zip,
+            country = country,
+            employeeId = employeeId
+        )
+    }
+
+    fun updateEmployee(employee: EmployeeEntity) {
+        with(employee) {
+            employeesDbQueries.update(
+                id = id,
+                firstName = firstName,
+                lastName = lastName,
+                age = age,
+                gender = gender
+            )
+
+            addressess.forEach { address -> insertAddress(address, id ?: return) }
+        }
+    }
+
+    fun updateAddress(address: AddressEntity, employeeId: Long) = with(address) {
+        addressDbQueries.update(
+            id = id,
             street = street,
             city = city,
             zip = zip,
