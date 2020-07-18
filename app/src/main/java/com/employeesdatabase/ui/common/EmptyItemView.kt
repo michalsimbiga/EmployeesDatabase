@@ -15,6 +15,6 @@ class EmptyItemView @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     init {
-        View.inflate(context, R.layout.item_empty, this)
+        View.inflate(context, R.layout.empty_item, this)
     }
 }
