@@ -9,7 +9,7 @@ import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.employeesdatabase.R
 import com.employeesdatabase.models.AddressItem
-import kotlinx.android.synthetic.main.item_address_view.view.*
+import kotlinx.android.synthetic.main.fragment_edit_address_item.view.*
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class AddressItemView @JvmOverloads constructor(
@@ -19,7 +19,7 @@ class AddressItemView @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     init {
-        View.inflate(context, R.layout.item_address_view, this)
+        View.inflate(context, R.layout.fragment_edit_address_item, this)
     }
 
     @ModelProp

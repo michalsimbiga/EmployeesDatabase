@@ -7,29 +7,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.airbnb.mvrx.Success
-import com.airbnb.mvrx.fragmentViewModel
-import com.airbnb.mvrx.withState
+import com.airbnb.mvrx.*
 import com.employeesdatabase.R
 import com.employeesdatabase.common.BaseFragment
 import com.employeesdatabase.di.addFragmentViewModel
 import com.employeesdatabase.models.AddressItem
-import kotlinx.android.synthetic.main.fragment_add_employee.*
-import kotlinx.android.synthetic.main.fragment_add_employee.view.*
+import kotlinx.android.synthetic.main.fragment_edit.*
+import kotlinx.android.synthetic.main.fragment_edit.view.*
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
-import timber.log.Timber
 
 class EditFragment : BaseFragment() {
 
     private val epoxyController by lazy {
-        EditEpoxyController(
-            onDeleteAddressCallback = ::deleteAddress
-        )
+        EditEpoxyController(onDeleteAddressCallback = ::deleteAddress)
     }
 
     private val viewModel: EditViewModel by fragmentViewModel()
-    private val args: AddEmployeeFragmentArgs by navArgs()
+    private val args: EditFragmentArgs by navArgs()
 
     private fun deleteAddress(address: AddressItem) {
         viewModel.deleteAddress(address)
@@ -42,14 +37,14 @@ class EditFragment : BaseFragment() {
     }
 
     override fun invalidate() = withState(viewModel) { state ->
-        if (state.addUserResult is Success) findNavController().navigate(R.id.action_edit_to_home)
+        if (state.navigateForward is Success) findNavController().navigate(R.id.action_edit_to_home)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_add_employee, container, false).apply {
+    ): View? = inflater.inflate(R.layout.fragment_edit, container, false).apply {
         addEmployeeRecycler.setController(epoxyController)
         epoxyController.onRestoreInstanceState(savedInstanceState)
     }
@@ -58,12 +53,23 @@ class EditFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         args.employee?.let { employee ->
-            epoxyController.setNewEmployee(employee)
-            viewModel.setEditMode()
+            with(viewModel) {
+                setEditMode()
+                epoxyController.setNewEmployee(employee)
+            }
         }
+
         epoxyController.requestModelBuild()
 
-        addEmployeeButton.setOnClickListener { viewModel.addEmployee(epoxyController.getEmployee()) }
+        viewModel.asyncSubscribe(
+            viewLifecycleOwner,
+            EditViewState::userOperationResult,
+            deliveryMode = UniqueOnly(subscriptionId = USER_OPERATIONS_KEY),
+            onSuccess = { showSnackbar(R.string.operation_successful) },
+            onFail = { showSnackbar(R.string.operation_unsuccessful) }
+        )
+
+        addEmployeeButton.setOnClickListener { viewModel.editOrAddEmployee(epoxyController.getEmployee()) }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -82,5 +88,9 @@ class EditFragment : BaseFragment() {
         epoxyController.clearCallbacks()
 
         super.onDestroyView()
+    }
+
+    companion object {
+        private const val USER_OPERATIONS_KEY = "UserOperationsKey"
     }
 }

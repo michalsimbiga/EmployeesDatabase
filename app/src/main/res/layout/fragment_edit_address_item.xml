@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp">
+    android:layout_margin="@dimen/fragment_edit_address_item_layout_margin_10dp">
 
     <ImageButton
         android:id="@+id/removeAddressButton"
@@ -24,17 +24,17 @@
 
     <TextView
         android:id="@+id/streetHeaderTextView"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_width="wrap_content"
-        android:text="Street: "
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/fragment_edit_address_header_margin_start_10dp"
+        android:text="@string/address_street_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editAddressButton" />
 
     <TextView
         android:id="@+id/streetTextView"
-        android:layout_height="wrap_content"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/streetHeaderTextView"
@@ -43,16 +43,16 @@
 
     <TextView
         android:id="@+id/zipHeaderTextView"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="Zip: "
+        android:layout_height="wrap_content"
+        android:text="@string/address_zip_text"
         app:layout_constraintStart_toStartOf="@id/streetHeaderTextView"
         app:layout_constraintTop_toBottomOf="@id/streetHeaderTextView" />
 
     <TextView
         android:id="@+id/zipTextView"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/zipHeaderTextView"
         app:layout_constraintTop_toTopOf="@id/zipHeaderTextView"
@@ -60,17 +60,17 @@
 
     <TextView
         android:id="@+id/cityHeaderTextView"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_width="wrap_content"
-        android:text="City: "
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/fragment_edit_address_header_margin_start_10dp"
+        android:text="@string/address_city_text"
         app:layout_constraintStart_toEndOf="@id/zipTextView"
         app:layout_constraintTop_toTopOf="@id/zipHeaderTextView" />
 
     <TextView
         android:id="@+id/cityTextView"
-        android:layout_height="wrap_content"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/cityHeaderTextView"
@@ -79,16 +79,16 @@
 
     <TextView
         android:id="@+id/countryHeaderTextView"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="Country: "
+        android:layout_height="wrap_content"
+        android:text="@string/address_country_text"
         app:layout_constraintStart_toStartOf="@id/zipHeaderTextView"
         app:layout_constraintTop_toBottomOf="@id/zipHeaderTextView" />
 
     <TextView
         android:id="@+id/countryTextView"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/countryHeaderTextView"
         app:layout_constraintTop_toTopOf="@id/countryHeaderTextView"

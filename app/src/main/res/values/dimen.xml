@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  Edit Fragment  -->
+    <dimen name="fragment_edit_add_address_button_margin_start_10dp">10dp</dimen>
+    <dimen name="fragment_edit_add_address_button_margin_end_10dp">10dp</dimen>
+
+    <dimen name="fragment_edit_header_text_size_16sp">16sp</dimen>
+    <dimen name="fragment_edit_header_margin_bottom_10dp">10dp</dimen>
+
+    <dimen name="fragment_edit_text_input_layout_margin_bottom_5dp">5dp</dimen>
+
+    <dimen name="fragment_edit_done_button_margin_end_10dp">10dp</dimen>
+    <dimen name="fragment_edit_done_button_margin_bottom_10dp">10dp</dimen>
+
+    <dimen name="fragment_edit_address_item_layout_margin_10dp">10dp</dimen>
+    <dimen name="fragment_edit_address_header_margin_start_10dp">10dp</dimen>
+
+    <dimen name="fragment_edit_address_add_button_margin_end_10dp">10dp</dimen>
+    <dimen name="fragment_edit_address_discard_button_margin_end_10dp">10dp</dimen>
+
+    <dimen name="fragment_edit_editable_address_text_input_margin_top_10dp">10dp</dimen>
+
+    <!--  Home Fragment  -->
+    <dimen name="fragment_home_recycler_item_spacing_10dp">10dp</dimen>
+    <dimen name="fragment_home_recycler_padding_10dp">10dp</dimen>
+
+    <dimen name="fragment_home_add_employee_fab_margin_end_16dp">16dp</dimen>
+    <dimen name="fragment_home_add_employee_fab_margin_bottom_16dp">16dp</dimen>
+
+    <dimen name="fragment_home_address_header_margin_start_50dp">50dp</dimen>
+    <dimen name="fragment_home_address_header_margin_start_10dp">10dp</dimen>
+
+    <dimen name="fragment_home_employee_header_margin_start_10dp">10dp</dimen>
+
+    <dimen name="fragment_home_age_text_view_width_50dp">50dp</dimen>
+
+    <dimen name="item_empty_layout_height_100dp">100dp</dimen>
+
+</resources>

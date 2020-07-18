@@ -1,4 +1,4 @@
-package com.employeesdatabase
+package com.employeesdatabase.common
 
 val doNothing = Unit
 

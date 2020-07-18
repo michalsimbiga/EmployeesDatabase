@@ -1,7 +1,7 @@
 package com.employeesdatabase.useCase
 
 import com.employeesdatabase.common.Result
-import com.employeesdatabase.common.UseCase
+import com.employeesdatabase.common.useCase.UseCase
 import com.employeesdatabase.models.Address
 import com.employeesdatabase.repository.EmployeesRepository
 

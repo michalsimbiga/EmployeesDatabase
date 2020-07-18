@@ -1,8 +1,8 @@
 package com.employeesdatabase.dao
 
 import com.employeesdatabase.*
+import com.employeesdatabase.common.UNINITIALIZED
 import com.employeesdatabase.models.AddressEntity
-import com.employeesdatabase.models.Employee
 import com.employeesdatabase.models.EmployeeEntity
 import com.employeesdatabase.models.toEntity
 

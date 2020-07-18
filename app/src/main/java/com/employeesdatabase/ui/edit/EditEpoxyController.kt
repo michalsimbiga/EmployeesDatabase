@@ -6,7 +6,7 @@ import com.employeesdatabase.models.AddressItem
 import com.employeesdatabase.models.EmployeeItem
 import com.employeesdatabase.ui.edit.view.*
 import com.employeesdatabase.ui.common.emptyItemView
-import com.employeesdatabase.UNINITIALIZED
+import com.employeesdatabase.common.UNINITIALIZED
 
 class EditEpoxyController(
     private var onDeleteAddressCallback: ((AddressItem) -> Unit)? = null
@@ -18,6 +18,7 @@ class EditEpoxyController(
     fun setNewEmployee(newEmployee: EmployeeItem) {
         employee = newEmployee
         listOfAddresses.addAll(newEmployee.addressess)
+        requestModelBuild()
     }
 
     override fun buildModels() {

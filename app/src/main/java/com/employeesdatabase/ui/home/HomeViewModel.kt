@@ -21,9 +21,9 @@ class HomeViewModel(
 ) : MvRxViewModel<HomeViewState>(state) {
 
     fun getAllEmployees() = viewModelScope.launch(Dispatchers.Default) {
-        getAllEmployeesUseCase.invoke(
-            onSuccess = { setState { copy(listOfEmployees = Success(it.map(Employee::toItem))) } },
-            onFailure = { setState { copy(listOfEmployees = Fail(it)) } }
+        getAllEmployeesUseCase.execute(
+            mapper = { listOfEmployees -> listOfEmployees.map(Employee::toItem) },
+            stateReducer = { copy(listOfEmployees = it) }
         )
     }
 

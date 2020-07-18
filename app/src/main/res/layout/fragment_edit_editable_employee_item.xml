@@ -7,21 +7,20 @@
 
     <TextView
         android:id="@+id/editableEmployeeHeaderHeader"
+        style="@style/HeaderItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="@string/employee_detail_header"
-        tools:text="Example header"/>
+        android:layout_marginBottom="@dimen/fragment_edit_header_margin_bottom_10dp"
+        android:text="@string/fragment_edit_employee_detail_header"
+        tools:text="Example header" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editableEmployeeFirstNameLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:hint="First Name">
+        android:layout_marginBottom="@dimen/fragment_edit_text_input_layout_margin_bottom_5dp"
+        android:hint="@string/first_name_hint">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editableEmployeeFirstNameTextEdit"
@@ -37,8 +36,8 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:hint="Last Name">
+        android:layout_marginBottom="@dimen/fragment_edit_text_input_layout_margin_bottom_5dp"
+        android:hint="@string/second_name_hint">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editableEmployeeLastNameTextEdit"
@@ -54,36 +53,35 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:hint="Age">
+        android:layout_marginBottom="@dimen/fragment_edit_text_input_layout_margin_bottom_5dp"
+        android:hint="@string/age_name_hint">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editableEmployeeAgeTextEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:inputType="number"
             android:imeOptions="actionNext"
+            android:inputType="number"
             android:nextFocusDown="@id/editableEmployeeGenderRadioGroup"
+            android:singleLine="true"
             tools:hint="Example hint"
             tools:text="56" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/editableEmployeeGenderHeader"
+        style="@style/HeaderItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="@string/gender_header"
-        tools:text="Example header"/>
+        android:layout_marginBottom="@dimen/fragment_edit_header_margin_bottom_10dp"
+        android:text="@string/fragment_edit_gender_header"
+        tools:text="Example header" />
 
     <RadioGroup
         android:id="@+id/editableEmployeeGenderRadioGroup"
         android:layout_width="match_parent"
-        android:focusable="true"
         android:layout_height="wrap_content"
+        android:focusable="true"
         android:focusableInTouchMode="true">
 
         <RadioButton

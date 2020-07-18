@@ -7,7 +7,7 @@ import android.widget.FrameLayout
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelView
 import com.employeesdatabase.R
-import kotlinx.android.synthetic.main.item_add_address_button.view.*
+import kotlinx.android.synthetic.main.fragment_edit_add_address_button.view.*
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class AddAddressButtonItemView @JvmOverloads constructor(
@@ -17,7 +17,7 @@ class AddAddressButtonItemView @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     init {
-        View.inflate(context, R.layout.item_add_address_button, this)
+        View.inflate(context, R.layout.fragment_edit_add_address_button, this)
     }
 
     @CallbackProp

@@ -13,7 +13,7 @@ import com.airbnb.epoxy.OnViewRecycled
 import com.employeesdatabase.R
 import com.employeesdatabase.extensions.onNotBlankCallback
 import com.employeesdatabase.models.EmployeeItem
-import kotlinx.android.synthetic.main.fragment_add_editable_employee_item.view.*
+import kotlinx.android.synthetic.main.fragment_edit_editable_employee_item.view.*
 
 typealias stringCallback = ((String) -> Unit)?
 
@@ -25,7 +25,7 @@ class EditableEmployeeItemView @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     init {
-        View.inflate(context, R.layout.fragment_add_editable_employee_item, this)
+        View.inflate(context, R.layout.fragment_edit_editable_employee_item, this)
     }
 
     @ModelProp

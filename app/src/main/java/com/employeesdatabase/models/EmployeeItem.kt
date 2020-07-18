@@ -1,17 +1,22 @@
 package com.employeesdatabase.models
 
 import android.os.Parcelable
+import com.employeesdatabase.common.UNINITIALIZED
+import com.employeesdatabase.common.empty
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class EmployeeItem(
-    val id: Long = -1,
-    val firstName: String = "",
-    val lastName: String = "",
-    val age: Int = -1,
-    val gender: String = "",
+    val id: Long = UNINITIALIZED,
+    val firstName: String = String.empty,
+    val lastName: String = String.empty,
+    val age: Int = UNINITIALIZED.toInt(),
+    val gender: String = String.empty,
     val addressess: List<AddressItem> = listOf()
-): Parcelable
+) : Parcelable {
+    fun isEmpty() =
+        firstName.trim() == String.empty && lastName.trim() == String.empty && age.toLong() == UNINITIALIZED && gender.trim() == String.empty
+}
 
 fun Employee.toItem() =
     EmployeeItem(

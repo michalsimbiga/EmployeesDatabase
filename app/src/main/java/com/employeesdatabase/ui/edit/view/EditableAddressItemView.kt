@@ -10,7 +10,7 @@ import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
 import com.employeesdatabase.R
 import com.employeesdatabase.models.AddressItem
-import kotlinx.android.synthetic.main.item_editable_address.view.*
+import kotlinx.android.synthetic.main.fragment_edit_editable_address_item.view.*
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class EditableAddressItemView @JvmOverloads constructor(
@@ -20,7 +20,7 @@ class EditableAddressItemView @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     init {
-        View.inflate(context, R.layout.item_editable_address, this)
+        View.inflate(context, R.layout.fragment_edit_editable_address_item, this)
     }
 
     @CallbackProp

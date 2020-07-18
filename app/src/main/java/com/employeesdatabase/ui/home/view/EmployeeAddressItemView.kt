@@ -8,7 +8,7 @@ import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
 import com.employeesdatabase.R
-import com.employeesdatabase.empty
+import com.employeesdatabase.common.empty
 import com.employeesdatabase.models.AddressItem
 import kotlinx.android.synthetic.main.fragment_home_employee_address_item.view.*
 

@@ -1,18 +1,38 @@
 <resources>
     <string name="app_name">employeesdatabase</string>
 
-    <!--  Add Fragment  -->
+    <!--  Edit Fragment  -->
     <string name="first_name_hint">First Name</string>
     <string name="second_name_hint">Second Name</string>
     <string name="age_name_hint">Age</string>
 
-    <string name="employee_detail_header">Employee Details</string>
-    <string name="addresses_header">Addresses Details</string>
-    <string name="gender_header">Gender</string>
+    <string name="fragment_edit_employee_detail_header">Employee Details</string>
+    <string name="fragment_edit_addresses_header">Addresses Details</string>
+    <string name="fragment_edit_gender_header">Gender</string>
+
+    <string name="fragment_edit_add_address_button_text">Add address</string>
+
+    <string name="fragment_edit_done_button_text">Done</string>
+    <string name="fragment_edit_address_discard_button_text">Discard</string>
+    <string name="fragment_edit_address_add_button_text">Add</string>
 
     <!--  Gender  -->
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
     <string name="gender_not_disclosed">Not Disclosed</string>
 
+    <!--  Address  -->
+    <string name="address_street_text">Street </string>
+    <string name="address_city_text">City </string>
+    <string name="address_zip_text">Zip </string>
+    <string name="address_country_text">Country </string>
+
+    <!--  Employee  -->
+    <string name="employee_name">Name </string>
+    <string name="employee_age">Age </string>
+    <string name="employee_gender">Gender </string>
+
+    <!--  Snackbar Messages  -->
+    <string name="operation_successful">Success</string>
+    <string name="operation_unsuccessful">Something failed, please try again</string>
 </resources>

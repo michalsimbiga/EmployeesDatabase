@@ -7,17 +7,16 @@
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/addEmployeeRecycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp" />
+        android:layout_height="match_parent" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/addEmployeeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="Add"
+        android:layout_marginEnd="@dimen/fragment_edit_done_button_margin_end_10dp"
+        android:layout_marginBottom="@dimen/fragment_edit_done_button_margin_bottom_10dp"
+        android:text="@string/fragment_edit_done_button_text"
         app:icon="@drawable/ic_done" />
 
 </FrameLayout>

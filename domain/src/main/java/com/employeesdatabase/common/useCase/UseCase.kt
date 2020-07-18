@@ -1,5 +1,6 @@
-package com.employeesdatabase.common
+package com.employeesdatabase.common.useCase
 
+import com.employeesdatabase.common.Result
 import com.employeesdatabase.error.CustomError
 
 abstract class UseCase<out Type, in Params> where Type : Any {
