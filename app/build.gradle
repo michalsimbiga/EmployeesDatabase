@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId ApplicationID.id
-        testInstrumentationRunner TestLibraries.customInstrumentationRunner
+        testInstrumentationRunner Versions.instrumentationRunner
     }
     buildTypes {
         debug {
@@ -58,8 +58,6 @@ dependencies {
     implementation Libraries.mvrx
     implementation Libraries.epoxy
     kapt Libraries.epoxyKapt
-
-    implementation Libraries.retrofit
 
     implementation Libraries.appCompat
     implementation Libraries.constraint

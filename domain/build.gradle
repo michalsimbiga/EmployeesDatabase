@@ -4,7 +4,6 @@ dependencies {
     implementation Libraries.coreKtx
     implementation Libraries.kotlinCoroutines
     implementation Libraries.koinAndroidX
-    implementation Libraries.threeTen
 
     testImplementation TestLibraries.junit
     testImplementation TestLibraries.mockk

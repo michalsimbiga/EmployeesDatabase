@@ -3,7 +3,6 @@
 * [Application Overview](#application-overview)
 * [Technology stack](#technology-stack)
 * [How to build the demo application](#how-to-build-the-application)
-* [Application Usage](#application-usage)
 
 ## Application Overview
 Simple employee database application that stores employee data in sql database and allows for basic operations: "ADD/GET/EDIT/DELETE" on database

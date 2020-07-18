@@ -18,7 +18,3 @@ sqldelight {
         schemaOutputDirectory = file("src/main/sqldelight/databases")
     }
 }
-
-dependencies {
-    implementation Libraries.threeTen
-}
