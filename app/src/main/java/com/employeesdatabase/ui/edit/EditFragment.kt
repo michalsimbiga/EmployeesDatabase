@@ -1,4 +1,4 @@
-package com.employeesdatabase.ui.addEmployee
+package com.employeesdatabase.ui.edit
 
 import android.content.Context
 import android.os.Bundle
@@ -20,21 +20,16 @@ import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 import timber.log.Timber
 
-class AddEmployeeFragment : BaseFragment() {
+class EditFragment : BaseFragment() {
 
     private val epoxyController by lazy {
-        AddEmployeeEpoxyController(
+        EditEpoxyController(
             onDeleteAddressCallback = ::deleteAddress
         )
     }
 
-    private val viewModel: AddEmployeeViewModel by fragmentViewModel()
-
+    private val viewModel: EditViewModel by fragmentViewModel()
     private val args: AddEmployeeFragmentArgs by navArgs()
-
-    init {
-        Timber.i("TESTING AddEmployeeFragment created")
-    }
 
     private fun deleteAddress(address: AddressItem) {
         viewModel.deleteAddress(address)

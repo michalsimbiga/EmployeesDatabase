@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/addEmployeeFragment"
-        android:name="com.employeesdatabase.ui.addEmployee.AddEmployeeFragment"
+        android:name="com.employeesdatabase.ui.edit.EditFragment"
         android:label="AddEmployeeFragment"
         tools:layout="@layout/fragment_add_employee">
 

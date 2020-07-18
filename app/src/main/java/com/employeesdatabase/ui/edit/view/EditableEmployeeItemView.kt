@@ -1,4 +1,4 @@
-package com.employeesdatabase.ui.addEmployee.view
+package com.employeesdatabase.ui.edit.view
 
 import android.content.Context
 import android.util.AttributeSet
@@ -14,7 +14,6 @@ import com.employeesdatabase.R
 import com.employeesdatabase.extensions.onNotBlankCallback
 import com.employeesdatabase.models.EmployeeItem
 import kotlinx.android.synthetic.main.fragment_add_editable_employee_item.view.*
-import timber.log.Timber
 
 typealias stringCallback = ((String) -> Unit)?
 

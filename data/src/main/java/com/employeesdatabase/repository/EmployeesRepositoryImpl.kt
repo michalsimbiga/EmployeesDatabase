@@ -13,16 +13,14 @@ class EmployeesRepositoryImpl(private val localDataSource: LocalDataSource) : Em
                 .map(EmployeeEntity::toDomain)
         }
 
-    override suspend fun getEmployeeById(): Result<Employee> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun getEmployeeById(employeeId: Long): Result<Employee> =
+        safeCall { localDataSource.getEmployeeById(employeeId = employeeId).toDomain() }
 
     override suspend fun insertEmployee(employee: Employee): Result<Unit> =
         safeCall { localDataSource.insertEmployee(employee = employee.toEntity()) }
 
-    override suspend fun editEmployee(employee: Employee): Result<Unit> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun updateEmployee(employee: Employee): Result<Unit> =
+        safeCall { localDataSource.updateEmployee(employee = employee.toEntity()) }
 
     override suspend fun deleteEmployee(employee: Employee): Result<Unit> =
         safeCall { localDataSource.deleteEmployee(employee = employee.toEntity()) }

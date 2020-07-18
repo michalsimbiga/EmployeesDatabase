@@ -5,11 +5,11 @@ import com.employeesdatabase.common.UseCase
 import com.employeesdatabase.models.Employee
 import com.employeesdatabase.repository.EmployeesRepository
 
-class EditEmployeeUseCase(private val employeesRepository: EmployeesRepository) :
-    UseCase<Unit, EditEmployeeUseCase.Params>() {
+class UpdateEmployeeUseCase(private val employeesRepository: EmployeesRepository) :
+    UseCase<Unit, UpdateEmployeeUseCase.Params>() {
 
     override suspend fun run(params: Params): Result<Unit> =
-        employeesRepository.editEmployee(params.employee)
+        employeesRepository.updateEmployee(params.employee)
 
     data class Params(val employee: Employee)
 }

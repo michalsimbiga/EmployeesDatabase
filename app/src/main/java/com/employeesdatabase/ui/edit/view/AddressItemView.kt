@@ -1,4 +1,4 @@
-package com.employeesdatabase.ui.addEmployee.view
+package com.employeesdatabase.ui.edit.view
 
 import android.content.Context
 import android.util.AttributeSet

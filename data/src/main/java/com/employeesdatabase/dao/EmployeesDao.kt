@@ -15,15 +15,23 @@ class EmployeesDao(
         val employeeEntityList = mutableListOf<EmployeeEntity>()
 
         employeesDbQueries.selectAll().executeAsList().forEach { employee ->
-            val addressess = addressDbQueries
+            val addresses = addressDbQueries
                 .selectByEmployeeId(employee.id)
                 .executeAsList()
                 .map(AddressDb::toEntity)
 
-            employeeEntityList.add(employee.toEntity().copy(addressess = addressess))
+            employeeEntityList.add(employee.toEntity().copy(addressess = addresses))
         }
 
         return employeeEntityList
+    }
+
+    fun getEmployeeById(employeeId: Long): EmployeeEntity {
+        val employee = employeesDbQueries.selectById(employeeId).executeAsOne().toEntity()
+        val employeeAddresses =
+            addressDbQueries.selectByEmployeeId(employeeId).executeAsList().map(AddressDb::toEntity)
+
+        return employee.copy(addressess = employeeAddresses)
     }
 
     fun insertEmployee(employeeEntity: EmployeeEntity) {
@@ -45,7 +53,7 @@ class EmployeesDao(
         }
     }
 
-    fun insertAddress(address: AddressEntity, employeeId: Long) = with(address) {
+    private fun insertAddress(address: AddressEntity, employeeId: Long) = with(address) {
         addressDbQueries.insertOrReplace(
             street = street,
             city = city,
@@ -65,11 +73,11 @@ class EmployeesDao(
                 gender = gender
             )
 
-            addressess.forEach { address -> insertAddress(address, id ?: return) }
+            addressess.forEach { address -> updateAddress(address, id ?: return) }
         }
     }
 
-    fun updateAddress(address: AddressEntity, employeeId: Long) = with(address) {
+    private fun updateAddress(address: AddressEntity, employeeId: Long) = with(address) {
         addressDbQueries.update(
             id = id,
             street = street,

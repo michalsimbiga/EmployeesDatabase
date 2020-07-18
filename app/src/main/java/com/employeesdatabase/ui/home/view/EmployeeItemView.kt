@@ -9,6 +9,8 @@ import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
 import com.employeesdatabase.R
+import com.employeesdatabase.blank
+import com.employeesdatabase.empty
 import com.employeesdatabase.models.EmployeeItem
 import kotlinx.android.synthetic.main.fragment_home_employee_item.view.*
 
@@ -35,7 +37,7 @@ class EmployeeItemView @JvmOverloads constructor(
 
     @ModelProp
     fun setEmployeeModel(employee: EmployeeItem?) {
-        val fullName = employee?.firstName + " " + employee?.lastName
+        val fullName = employee?.firstName + String.blank + employee?.lastName
         homeEmployeeName.text = fullName.capitalize()
         homeEmployeeAge.text = employee?.age.toString().capitalize()
         homeEmployeeGender.text = employee?.gender?.capitalize()
@@ -43,9 +45,9 @@ class EmployeeItemView @JvmOverloads constructor(
 
     @OnViewRecycled
     fun onViewRecycled() {
-        homeEmployeeName.text = ""
-        homeEmployeeAge.text = ""
-        homeEmployeeGender.text = ""
+        homeEmployeeName.text = String.empty
+        homeEmployeeAge.text = String.empty
+        homeEmployeeGender.text = String.empty
         homeEditEmployeeButton.setOnClickListener(null)
         homeDeleteEmployeeButton.setOnClickListener(null)
     }

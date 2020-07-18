@@ -35,7 +35,6 @@ class HomeViewModel(
         )
     }
 
-
     companion object :
         KoinMvRxViewModelFactory<HomeViewModel, HomeViewState>(HomeViewModel::class)
 }

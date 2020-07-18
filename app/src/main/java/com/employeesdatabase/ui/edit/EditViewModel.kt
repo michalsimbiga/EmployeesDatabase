@@ -1,4 +1,4 @@
-package com.employeesdatabase.ui.addEmployee
+package com.employeesdatabase.ui.edit
 
 import androidx.lifecycle.viewModelScope
 import com.airbnb.mvrx.Fail
@@ -14,11 +14,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class AddEmployeeViewModel(
-    state: AddEmployeeViewState,
+class EditViewModel(
+    state: EditViewState,
     private val insertOrReplaceEmployeeUseCase: InsertOrReplaceEmployeeUseCase,
     private val deleteAddressByIdUseCase: DeleteAddressByIdUseCase
-) : MvRxViewModel<AddEmployeeViewState>(state) {
+) : MvRxViewModel<EditViewState>(state) {
 
     fun setEditMode() = setState { copy(editingEmployee = true) }
 
@@ -39,5 +39,5 @@ class AddEmployeeViewModel(
     }
 
     companion object :
-        KoinMvRxViewModelFactory<AddEmployeeViewModel, AddEmployeeViewState>(AddEmployeeViewModel::class)
+        KoinMvRxViewModelFactory<EditViewModel, EditViewState>(EditViewModel::class)
 }

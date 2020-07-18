@@ -1,15 +1,14 @@
-package com.employeesdatabase.ui.addEmployee
+package com.employeesdatabase.ui.edit
 
 import android.os.Bundle
 import com.airbnb.epoxy.EpoxyController
 import com.employeesdatabase.models.AddressItem
 import com.employeesdatabase.models.EmployeeItem
-import com.employeesdatabase.ui.addEmployee.view.*
+import com.employeesdatabase.ui.edit.view.*
 import com.employeesdatabase.ui.common.emptyItemView
 import com.employeesdatabase.UNINITIALIZED
-import timber.log.Timber
 
-class AddEmployeeEpoxyController(
+class EditEpoxyController(
     private var onDeleteAddressCallback: ((AddressItem) -> Unit)? = null
 ) : EpoxyController() {
 

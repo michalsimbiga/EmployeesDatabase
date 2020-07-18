@@ -8,6 +8,7 @@ import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
 import com.employeesdatabase.R
+import com.employeesdatabase.empty
 import com.employeesdatabase.models.AddressItem
 import kotlinx.android.synthetic.main.fragment_home_employee_address_item.view.*
 
@@ -32,9 +33,9 @@ class EmployeeAddressItemView @JvmOverloads constructor(
 
     @OnViewRecycled
     fun onViewRecycled() {
-        homeEmployeeAddressStreet.text = ""
-        homeEmployeeAddressCity.text = ""
-        homeEmployeeAddressZip.text = ""
-        homeEmployeeAddressCountry.text = ""
+        homeEmployeeAddressStreet.text = String.empty
+        homeEmployeeAddressCity.text = String.empty
+        homeEmployeeAddressZip.text = String.empty
+        homeEmployeeAddressCountry.text = String.empty
     }
 }

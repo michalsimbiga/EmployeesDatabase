@@ -4,8 +4,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.employeesdatabase.Database
 import com.employeesdatabase.DatabaseImpl
 import com.employeesdatabase.MyDatabase
-import com.employeesdatabase.ui.addEmployee.AddEmployeeViewModel
-import com.employeesdatabase.ui.addEmployee.AddEmployeeViewState
+import com.employeesdatabase.ui.edit.EditViewModel
+import com.employeesdatabase.ui.edit.EditViewState
 import com.employeesdatabase.ui.home.HomeViewModel
 import com.employeesdatabase.ui.home.HomeViewState
 import com.squareup.sqldelight.android.AndroidSqliteDriver
@@ -43,8 +43,8 @@ val mainModule = module {
 }
 
 val addFragmentViewModel = module {
-    viewModel { (state: AddEmployeeViewState) ->
-        AddEmployeeViewModel(
+    viewModel { (state: EditViewState) ->
+        EditViewModel(
             state = state,
             insertOrReplaceEmployeeUseCase = get(),
             deleteAddressByIdUseCase = get()
