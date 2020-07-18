@@ -39,13 +39,11 @@ class EmployeesRepositoryImplTest {
     @Test
     fun `When getEmployeeById invoked call local data source getEmployeeById method`() =
         runBlocking {
-            val mockedEmployeeId = 4L
-
             coEvery { localDataSource.getEmployeeById(any()) } returns mockedEmployee.toEntity()
 
-            repository.getEmployeeById(mockedEmployeeId)
+            repository.getEmployeeById(mockedEmployee.id)
 
-            coVerify { localDataSource.getEmployeeById(mockedEmployeeId) }
+            coVerify { localDataSource.getEmployeeById(mockedEmployee.id) }
         }
 
     @Test
