@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.airbnb.mvrx.*
+import com.airbnb.mvrx.Success
+import com.airbnb.mvrx.UniqueOnly
+import com.airbnb.mvrx.fragmentViewModel
+import com.airbnb.mvrx.withState
 import com.employeesdatabase.R
 import com.employeesdatabase.common.BaseFragment
 import com.employeesdatabase.di.addFragmentViewModel

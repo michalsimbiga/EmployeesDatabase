@@ -1,6 +1,12 @@
 package com.employeesdatabase.common
 
-import com.airbnb.mvrx.*
+import com.airbnb.mvrx.Async
+import com.airbnb.mvrx.BaseMvRxViewModel
+import com.airbnb.mvrx.BuildConfig
+import com.airbnb.mvrx.Fail
+import com.airbnb.mvrx.Loading
+import com.airbnb.mvrx.MvRxState
+import com.airbnb.mvrx.Success
 import com.employeesdatabase.common.useCase.NoParameterUseCase
 import com.employeesdatabase.common.useCase.UseCase
 import kotlinx.coroutines.SupervisorJob

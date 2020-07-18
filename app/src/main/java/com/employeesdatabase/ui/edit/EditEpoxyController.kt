@@ -2,11 +2,14 @@ package com.employeesdatabase.ui.edit
 
 import android.os.Bundle
 import com.airbnb.epoxy.EpoxyController
+import com.employeesdatabase.common.UNINITIALIZED
 import com.employeesdatabase.models.AddressItem
 import com.employeesdatabase.models.EmployeeItem
-import com.employeesdatabase.ui.edit.view.*
 import com.employeesdatabase.ui.common.emptyItemView
-import com.employeesdatabase.common.UNINITIALIZED
+import com.employeesdatabase.ui.edit.view.addAddressButtonItemView
+import com.employeesdatabase.ui.edit.view.addressItemView
+import com.employeesdatabase.ui.edit.view.editableAddressItemView
+import com.employeesdatabase.ui.edit.view.editableEmployeeItemView
 
 class EditEpoxyController(
     private var onDeleteAddressCallback: ((AddressItem) -> Unit)? = null
@@ -48,8 +51,7 @@ class EditEpoxyController(
                             if (addressItem.id != UNINITIALIZED) {
                                 onDeleteAddressCallback?.invoke(addressItem)
                                 listOfAddresses.remove(addressItem)
-                            }
-                            else listOfAddresses.removeAt(index)
+                            } else listOfAddresses.removeAt(index)
                         }
                     }
                 }

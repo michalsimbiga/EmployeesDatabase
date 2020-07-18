@@ -1,7 +1,12 @@
 package com.employeesdatabase.common
 
 import androidx.lifecycle.ViewModelStoreOwner
-import com.airbnb.mvrx.*
+import com.airbnb.mvrx.ActivityViewModelContext
+import com.airbnb.mvrx.BaseMvRxViewModel
+import com.airbnb.mvrx.FragmentViewModelContext
+import com.airbnb.mvrx.MvRxState
+import com.airbnb.mvrx.MvRxViewModelFactory
+import com.airbnb.mvrx.ViewModelContext
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.core.parameter.parametersOf
 import kotlin.reflect.KClass

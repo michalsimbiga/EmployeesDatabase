@@ -11,6 +11,7 @@ import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
 import com.employeesdatabase.R
+import com.employeesdatabase.common.empty
 import com.employeesdatabase.extensions.onNotBlankCallback
 import com.employeesdatabase.models.EmployeeItem
 import kotlinx.android.synthetic.main.fragment_edit_editable_employee_item.view.*
@@ -74,9 +75,9 @@ class EditableEmployeeItemView @JvmOverloads constructor(
 
     @OnViewRecycled
     fun onViewRecycled() {
-        editableEmployeeFirstNameTextEdit.setText("")
-        editableEmployeeLastNameTextEdit.setText("")
-        editableEmployeeAgeTextEdit.setText("")
+        editableEmployeeFirstNameTextEdit.setText(String.empty)
+        editableEmployeeLastNameTextEdit.setText(String.empty)
+        editableEmployeeAgeTextEdit.setText(String.empty)
         editableEmployeeGenderRadioGroup.clearCheck()
     }
 

@@ -9,6 +9,7 @@ import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
 import com.employeesdatabase.R
+import com.employeesdatabase.common.empty
 import com.employeesdatabase.models.AddressItem
 import kotlinx.android.synthetic.main.fragment_edit_editable_address_item.view.*
 
@@ -51,9 +52,9 @@ class EditableAddressItemView @JvmOverloads constructor(
 
     @OnViewRecycled
     fun onViewRecycled() {
-        streetEditableEditText.setText("")
-        cityEditableEditText.setText("")
-        zipEditableEditText.setText("")
-        countryEditableEditText.setText("")
+        streetEditableEditText.setText(String.empty)
+        cityEditableEditText.setText(String.empty)
+        zipEditableEditText.setText(String.empty)
+        countryEditableEditText.setText(String.empty)
     }
 }

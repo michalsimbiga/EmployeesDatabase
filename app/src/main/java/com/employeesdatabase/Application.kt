@@ -39,5 +39,4 @@ class Application : Application() {
 
         super.onTerminate()
     }
-
 }

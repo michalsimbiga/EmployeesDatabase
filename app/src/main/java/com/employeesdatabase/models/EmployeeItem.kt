@@ -15,7 +15,10 @@ data class EmployeeItem(
     val addressess: List<AddressItem> = listOf()
 ) : Parcelable {
     fun isEmpty() =
-        firstName.trim() == String.empty && lastName.trim() == String.empty && age.toLong() == UNINITIALIZED && gender.trim() == String.empty
+        firstName.trim() == String.empty
+                && lastName.trim() == String.empty
+                && age.toLong() == UNINITIALIZED
+                && gender.trim() == String.empty
 }
 
 fun Employee.toItem() =
@@ -25,7 +28,7 @@ fun Employee.toItem() =
         lastName = lastName,
         age = age,
         gender = gender,
-        addressess = addressess.map { it.toItem() }
+        addressess = addressess.map(Address::toItem)
     )
 
 fun EmployeeItem.toDomain() =
@@ -35,5 +38,5 @@ fun EmployeeItem.toDomain() =
         lastName = lastName,
         age = age,
         gender = gender,
-        addressess = addressess.map { it.toDomain() }
+        addressess = addressess.map(AddressItem::toDomain)
     )

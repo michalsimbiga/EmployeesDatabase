@@ -25,3 +25,4 @@ class AddAddressButtonItemView @JvmOverloads constructor(
         addAddressButton.setOnClickListener(onAddAddressCallback).also { rootView.clearFocus() }
     }
 }
+
