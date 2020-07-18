@@ -3,7 +3,11 @@ package com.employeesdatabase.repository
 import com.employeesdatabase.common.Result
 import com.employeesdatabase.common.safeCall
 import com.employeesdatabase.dataSource.LocalDataSource
-import com.employeesdatabase.models.*
+import com.employeesdatabase.models.Address
+import com.employeesdatabase.models.Employee
+import com.employeesdatabase.models.EmployeeEntity
+import com.employeesdatabase.models.toDomain
+import com.employeesdatabase.models.toEntity
 
 class EmployeesRepositoryImpl(private val localDataSource: LocalDataSource) : EmployeesRepository {
 

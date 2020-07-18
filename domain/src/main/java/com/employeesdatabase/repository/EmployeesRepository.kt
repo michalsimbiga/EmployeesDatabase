@@ -12,5 +12,4 @@ interface EmployeesRepository {
     suspend fun updateEmployee(employee: Employee): Result<Unit>
     suspend fun deleteEmployee(employee: Employee): Result<Unit>
     suspend fun deleteAddress(address: Address): Result<Unit>
-
 }

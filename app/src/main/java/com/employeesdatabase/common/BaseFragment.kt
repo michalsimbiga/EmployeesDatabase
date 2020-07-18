@@ -5,7 +5,6 @@ import androidx.annotation.StringRes
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.mvrx.BaseMvRxFragment
 import com.employeesdatabase.ui.main.MainActivity
-import com.google.android.material.snackbar.Snackbar
 
 abstract class BaseFragment : BaseMvRxFragment() {
 

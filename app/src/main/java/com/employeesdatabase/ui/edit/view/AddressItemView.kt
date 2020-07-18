@@ -23,7 +23,7 @@ class AddressItemView @JvmOverloads constructor(
     }
 
     @ModelProp
-    fun setAddressModel(addressModel: AddressItem?){
+    fun setAddressModel(addressModel: AddressItem?) {
         streetTextView.text = addressModel?.street
         cityTextView.text = addressModel?.city
         zipTextView.text = addressModel?.zip

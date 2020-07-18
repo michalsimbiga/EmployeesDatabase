@@ -2,7 +2,6 @@ package com.employeesdatabase.ui.home
 
 import androidx.lifecycle.viewModelScope
 import com.airbnb.mvrx.Fail
-import com.airbnb.mvrx.Success
 import com.employeesdatabase.common.KoinMvRxViewModelFactory
 import com.employeesdatabase.common.MvRxViewModel
 import com.employeesdatabase.models.Employee

@@ -1,7 +1,10 @@
 package com.employeesdatabase
 
 import com.employeesdatabase.dataSource.LocalDataSource
-import com.employeesdatabase.models.*
+import com.employeesdatabase.models.Address
+import com.employeesdatabase.models.Employee
+import com.employeesdatabase.models.EmployeeEntity
+import com.employeesdatabase.models.toEntity
 import com.employeesdatabase.repository.EmployeesRepositoryImpl
 import io.mockk.coEvery
 import io.mockk.coVerify

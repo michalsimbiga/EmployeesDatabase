@@ -1,6 +1,8 @@
 package com.employeesdatabase.dao
 
-import com.employeesdatabase.*
+import com.employeesdatabase.AddressDb
+import com.employeesdatabase.AddressDbQueries
+import com.employeesdatabase.EmployeesDbQueries
 import com.employeesdatabase.common.UNINITIALIZED
 import com.employeesdatabase.models.AddressEntity
 import com.employeesdatabase.models.EmployeeEntity

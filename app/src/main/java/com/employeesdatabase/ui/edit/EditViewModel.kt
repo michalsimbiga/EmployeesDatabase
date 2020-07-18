@@ -1,7 +1,6 @@
 package com.employeesdatabase.ui.edit
 
 import androidx.lifecycle.viewModelScope
-import com.airbnb.mvrx.Fail
 import com.airbnb.mvrx.Success
 import com.employeesdatabase.common.KoinMvRxViewModelFactory
 import com.employeesdatabase.common.MvRxViewModel
@@ -15,7 +14,6 @@ import com.employeesdatabase.useCase.InsertOrReplaceEmployeeUseCase
 import com.employeesdatabase.useCase.UpdateEmployeeUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class EditViewModel(
     state: EditViewState,

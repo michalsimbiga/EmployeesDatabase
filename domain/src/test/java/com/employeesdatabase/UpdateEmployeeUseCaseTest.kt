@@ -3,7 +3,6 @@ package com.employeesdatabase
 import com.employeesdatabase.common.Result
 import com.employeesdatabase.models.Employee
 import com.employeesdatabase.repository.EmployeesRepository
-import com.employeesdatabase.useCase.InsertOrReplaceEmployeeUseCase
 import com.employeesdatabase.useCase.UpdateEmployeeUseCase
 import io.mockk.coEvery
 import io.mockk.coVerify

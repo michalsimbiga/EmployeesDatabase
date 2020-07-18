@@ -15,10 +15,10 @@ data class EmployeeItem(
     val addressess: List<AddressItem> = listOf()
 ) : Parcelable {
     fun isEmpty() =
-        firstName.trim() == String.empty
-                && lastName.trim() == String.empty
-                && age.toLong() == UNINITIALIZED
-                && gender.trim() == String.empty
+        firstName.trim() == String.empty &&
+                lastName.trim() == String.empty &&
+                age.toLong() == UNINITIALIZED &&
+                gender.trim() == String.empty
 }
 
 fun Employee.toItem() =
