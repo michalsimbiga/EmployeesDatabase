@@ -56,10 +56,8 @@ class EditFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         args.employee?.let { employee ->
-            with(viewModel) {
-                setEditMode()
-                epoxyController.setNewEmployee(employee)
-            }
+            viewModel.setEditMode()
+            epoxyController.setNewEmployee(employee)
         }
 
         epoxyController.requestModelBuild()
@@ -77,6 +75,7 @@ class EditFragment : BaseFragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         epoxyController.onSaveInstanceState(outState)
+
         super.onSaveInstanceState(outState)
     }
 

@@ -1,19 +1,24 @@
 package com.employeesdatabase.models
 
 import android.os.Parcelable
+import com.employeesdatabase.common.UNINITIALIZED
+import com.employeesdatabase.common.empty
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class AddressItem(
-    val id: Long = -1,
-    val street: String = "",
-    val city: String = "",
-    val zip: String = "",
-    val country: String = "",
+    val id: Long = UNINITIALIZED,
+    val street: String = String.empty,
+    val city: String = String.empty,
+    val zip: String = String.empty,
+    val country: String = String.empty,
     val editable: Boolean = true
 ) : Parcelable {
     fun isEmpty() =
-        street.trim() == "" && city.trim() == "" && zip.trim() == "" && country.trim() == ""
+        street.trim() == String.empty &&
+                city.trim() == String.empty &&
+                zip.trim() == String.empty &&
+                country.trim() == String.empty
 }
 
 fun AddressItem.toDomain() =

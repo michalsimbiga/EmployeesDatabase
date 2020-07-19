@@ -1,6 +1,7 @@
 package com.employeesdatabase.models
 
 import com.employeesdatabase.AddressDb
+import com.employeesdatabase.common.UNINITIALIZED
 
 data class AddressEntity(
     val id: Long? = null,
@@ -21,7 +22,7 @@ fun AddressDb.toEntity() =
 
 fun AddressEntity.toDomain() =
     Address(
-        id = id ?: -1,
+        id = id ?: UNINITIALIZED,
         street = street,
         city = city,
         zip = zip,

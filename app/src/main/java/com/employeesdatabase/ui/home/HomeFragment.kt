@@ -70,7 +70,6 @@ class HomeFragment : BaseFragment() {
 
     override fun onDestroy() {
         epoxyController.clearCallbacks()
-        unloadKoinModules(homeFragmentViewModel)
 
         super.onDestroy()
     }

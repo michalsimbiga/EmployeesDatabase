@@ -1,6 +1,7 @@
 package com.employeesdatabase.models
 
 import com.employeesdatabase.EmployeeDb
+import com.employeesdatabase.common.UNINITIALIZED
 
 data class EmployeeEntity(
     val id: Long? = null,
@@ -13,7 +14,7 @@ data class EmployeeEntity(
 
 fun EmployeeEntity.toDomain() =
     Employee(
-        id = id ?: -1,
+        id = id ?: UNINITIALIZED,
         firstName = firstName,
         lastName = lastName,
         age = age,

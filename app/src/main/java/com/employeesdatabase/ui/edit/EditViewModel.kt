@@ -35,7 +35,7 @@ class EditViewModel(
         viewModelScope.launch(Dispatchers.Default) {
             insertOrReplaceEmployeeUseCase.execute(
                 params = InsertOrReplaceEmployeeUseCase.Params(employee = employee.toDomain()),
-                stateReducer = { copy(userOperationResult = it, navigateForward = Success(Unit)) }
+                stateReducer = { copy(userOperationResult = it, navigateForward = it) }
             )
         }
 
@@ -43,7 +43,7 @@ class EditViewModel(
         viewModelScope.launch(Dispatchers.Default) {
             updateEmployeeUseCase.execute(
                 params = UpdateEmployeeUseCase.Params(employee = employee.toDomain()),
-                stateReducer = { copy(userOperationResult = it, navigateForward = Success(Unit)) }
+                stateReducer = { copy(userOperationResult = it, navigateForward = it) }
             )
         }
 
